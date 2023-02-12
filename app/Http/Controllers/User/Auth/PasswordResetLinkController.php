@@ -1,23 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\User\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
-use Inertia\Response;
+use App\Models\User;
+use App\Models\Company_info;
 
 class PasswordResetLinkController extends Controller
 {
     /**
      * Display the password reset link request view.
+     *
+     * @return \Inertia\Response
      */
-    public function create(): Response
+    public function create()
     {
-        return Inertia::render('Auth/ForgotPassword', [
+        return Inertia::render('User/Auth/ForgotPassword', [
             'status' => session('status'),
         ]);
     }
@@ -25,9 +27,12 @@ class PasswordResetLinkController extends Controller
     /**
      * Handle an incoming password reset link request.
      *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
@@ -47,5 +52,6 @@ class PasswordResetLinkController extends Controller
         throw ValidationException::withMessages([
             'email' => [trans($status)],
         ]);
+
     }
 }
