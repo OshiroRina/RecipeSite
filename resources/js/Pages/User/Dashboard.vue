@@ -43,7 +43,6 @@ library.add(faAngleRight);
                     </v-col>
                 </v-row>
                 <v-row>
-                   
                     <v-col>
                         Verdura
                     </v-col>
