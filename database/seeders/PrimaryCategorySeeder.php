@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PrimaryCategorySeeder extends Seeder
 {
@@ -14,6 +15,13 @@ class PrimaryCategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('primary_categories')->insert([
+            [
+            'name' => 'Aperitivos y tapas',
+            ],
+            [
+            'name' => 'Platos fuertes'
+            ]
+        ]);
     }
 }

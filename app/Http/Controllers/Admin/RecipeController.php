@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Recipe;
 
 class RecipeController extends Controller
 {
@@ -15,8 +16,10 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Admin/Recipe/Index', [
+        $recipes = Recipe::select('id','name','information')->get();
 
+        return Inertia::render('Admin/Recipe/Index', [
+            'recipes' => $recipes,
         ]);
     }
 
