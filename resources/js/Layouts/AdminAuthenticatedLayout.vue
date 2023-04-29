@@ -5,6 +5,7 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import FlashMessage from '@/Components/FlashMessage.vue';
 import { Link } from '@inertiajs/vue3';
 
 </script>
@@ -26,7 +27,7 @@ import { Link } from '@inertiajs/vue3';
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('admin.dashboard')" :active="route().current('admin.dashboard')">
+                                <NavLink :href="route('admin.recipe.index')" :active="route().current('admin.dashboard')">
                                     TOP
                                 </NavLink>
                                 <!-- <NavLink :href="route('tests.index')" :active="route().current('tests.index')">
@@ -108,6 +109,7 @@ import { Link } from '@inertiajs/vue3';
 
             <!-- Page Content -->
             <main class="pb-8">
+                <FlashMessage />
                 <slot />
             </main>
         </div>

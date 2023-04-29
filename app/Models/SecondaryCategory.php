@@ -15,4 +15,14 @@ class SecondaryCategory extends Model
         'sort_order',
         'created_at'
     ];
+
+    public function primary_category()
+    {
+        return $this->belongsTo(PrimaryCategory::class);
+    }
+
+    public function recipes()
+    {
+        return $this->hasMany(Recipe::class);
+    }
 }

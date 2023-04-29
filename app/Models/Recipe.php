@@ -18,4 +18,14 @@ class Recipe extends Model
         'delete_flag',
         'created_at'
     ];
+
+    public function secondary_category()
+    {
+        return $this->belongsTo(SecondaryCategory::class);
+    }
+
+    public function recipe_details()
+    {
+        return $this->hasMany(RecipeDetail::class);
+    }
 }

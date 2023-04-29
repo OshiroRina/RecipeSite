@@ -18,4 +18,9 @@ class RecipeDetail extends Model
         'delete_flag',
         'created_at'
     ];
+
+    public function recipe()
+    {
+        return $this->belongsTo(Recipe::class);
+    }
 }

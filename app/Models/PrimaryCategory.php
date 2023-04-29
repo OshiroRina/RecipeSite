@@ -14,4 +14,9 @@ class PrimaryCategory extends Model
         'sort_order',
         'created_at'
     ];
+
+    public function secondary_categories()
+    {
+        return $this->hasMany(SecondaryCategory::class);
+    }
 }
