@@ -1,20 +1,26 @@
 <script setup>
 import AdminAuthenticatedLayout from "@/Layouts/AdminAuthenticatedLayout.vue";
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import { router,Head, Link, useForm } from '@inertiajs/vue3';
 import { reactive, ref } from "vue";
 
 const props = defineProps({
     recipe: Object,
-    categories: Array
+    categories: Array,
+    image_names: Array,
 });
-console.log(props.recipe.recipe_details)
+console.log(props.recipe.recipe_details[0])
 
 const form = useForm({
     name: props.recipe.name,
     information: props.recipe.information,
-    secondary_category: { id: props.recipe.secondary_category_id, name: props.recipe.secondary_category.name },
+    secondary_category: props.recipe.secondary_category_id,
     details :props.recipe.recipe_details,
+    main_image: '',
+    image1: [],
+    _method: 'put'
 });
+
+console.log(form.image1)
 
 const rules = {
     name: [
@@ -38,7 +44,8 @@ const activeSubmit = async () => {
         const validResult = await Form.value.validate();
         if (validResult.valid) {
             state.success = true;
-            form.put(route("admin.recipe.update", { id: props.recipe.id }))
+            console.log(form);
+            form.post(route("admin.recipe.update", { id: props.recipe.id }))
 
         } else {
             return (state.success = false);
@@ -53,7 +60,7 @@ const activeSubmit = async () => {
         <div class="py-12">
             <v-container>
                 <div class="text-xl font-bold">レシピ編集</div>
-                <v-form ref="Form" @submit.prevent="activeSubmit">
+                <v-form ref="Form" @submit.prevent="activeSubmit" enctype="multipart/form-data">
                 <v-card class="mx-auto my-8 px-24">
                     <div class="m-10">
                         <v-row>
@@ -69,12 +76,13 @@ const activeSubmit = async () => {
                                     item-title="name" item-value="id"></v-select></v-col>
                         </v-row>
                         <v-row>
-                            <v-col><v-file-input label="完成画像"></v-file-input></v-col>
+                            <v-col><v-file-input label="完成画像" v-model="form.main_image"></v-file-input></v-col>
+                            <v-col v-if="form.main_image != null"><img :src="'/storage' + props.recipe.image" alt="" class="w-60"></v-col>
                         </v-row>
                     </div>
-                    <div class="text-lg font-bold bg-gray-400 px-10 mx-10 text-white">工程編集</div>
+                    <div class="text-lg font-bold bg-gray-400 px-10 mx-10 text-white" v-if="props.recipe.recipe_details[0] != null">工程編集</div>
                     <section class="d-flex">
-                        <div class="m-10 border p-3" v-for="detail in form.details" :key="detail.id">
+                        <div class="m-10 border p-3" v-for="detail,index in form.details" :key="detail.id">
                             <div cols="4">
                                 <v-row>
                                     <v-col><v-text-field v-model="detail.title" label="工程タイトル" :rules="rules.title" outlined
@@ -85,7 +93,10 @@ const activeSubmit = async () => {
                                             required></v-textarea></v-col>
                                 </v-row>
                                 <v-row>
-                                    <v-col><v-file-input v-model="detail.image" label="完成画像"></v-file-input></v-col>
+                                    <v-col><v-file-input label="完成画像" v-model="form.image1[index]"></v-file-input></v-col>
+                                </v-row>
+                                <v-row>
+                                    <v-col v-if="detail.image1 != null"><img :src="'/storage' + detail.image1" alt="" class="w-40 h-28"></v-col>
                                 </v-row>
                             </div>
                         </div>

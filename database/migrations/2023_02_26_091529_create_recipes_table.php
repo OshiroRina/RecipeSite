@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('information')->nullable();
             $table->text('text')->nullable();
             $table->string('image')->nullable();
-            $table->boolean('delete_flag');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

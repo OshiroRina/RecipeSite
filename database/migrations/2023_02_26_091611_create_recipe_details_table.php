@@ -23,7 +23,7 @@ return new class extends Migration
             $table->text('explanation')->nullable();
             $table->string('image1')->nullable();
             $table->string('image2')->nullable();
-            $table->boolean('delete_flag');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

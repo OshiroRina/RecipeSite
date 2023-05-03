@@ -20,19 +20,16 @@ class RecipeSeeder extends Seeder
                 'name' => 'Receta1',
                 'secondary_category_id' => 1,
                 'information' => 'Es un plato tradicional de la prefecture Aichi.',
-                'delete_flag' => 0,
             ],
             [
                 'name' => 'Receta2',
                 'secondary_category_id' => 3,
                 'information' => 'Es un plato tradicional de la prefecture Mie.',
-                'delete_flag' => 0,
             ],
             [
                 'name' => 'Receta3',
                 'secondary_category_id' => 2,
                 'information' => 'Es un plato tradicional de la prefecture Gifu.',
-                'delete_flag' => 0,
             ],
         ]);
     }

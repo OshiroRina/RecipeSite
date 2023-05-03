@@ -20,31 +20,26 @@ class RecipeDetailSeeder extends Seeder
                 'title' => 'Primero',
                 'explanation' => ': Lava las verduras y corta como la foto.',
                 'recipe_id' => '1',
-                'delete_flag' => 0,
             ],
             [
                 'title' => 'Segundo',
                 'explanation' => 'Frie esas verduras y huevos juntos',
                 'recipe_id' => '1',
-                'delete_flag' => 0,
             ],
             [
                 'title' => 'Tercera',
                 'explanation' => 'Apaga el furgo',
                 'recipe_id' => '1',
-                'delete_flag' => 0,
             ],
             [
                 'title' => 'Primero',
                 'explanation' => ': Lava las verduras y corta como la foto.',
                 'recipe_id' => '2',
-                'delete_flag' => 0,
             ],
             [
                 'title' => 'Segundo',
                 'explanation' => 'Frie esas verduras y huevos juntos',
                 'recipe_id' => '2',
-                'delete_flag' => 0,
             ],
 
         ]);
