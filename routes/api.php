@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth:sanctum')->get('/searchRecipes', function (Request $request) {
+    return  Recipe::with('secondary_category','recipe_details')
+        ->searchCategory($request->search_category);
+});

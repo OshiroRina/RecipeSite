@@ -2,7 +2,6 @@
 import { ref } from 'vue';
 import Header from '@/Components/Layout/Header.vue';
 import Footer from '@/Components/Layout/Footer.vue';
-import Slider from '@/Components/Slider.vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
@@ -16,10 +15,9 @@ import { Link } from '@inertiajs/vue3';
     <div>
         <v-app>
             <Header />
-            <div class="min-h-screen bg-white">
+            <div class="min-h-screen bg-white" style="background: url('/storage/images/background.png')">
                 <!-- Page Content -->
                 <main>
-                    <Slider />
                     <slot />
                 </main>
             </div>

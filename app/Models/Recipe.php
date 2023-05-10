@@ -32,4 +32,11 @@ class Recipe extends Model
     {
         return $this->hasMany(RecipeDetail::class);
     }
+
+    public function scopeSearchCategory($query, $search_category = null)
+    {
+         if(!empty($search_category)){
+            return $query->where('secondary_category_id','=', $search_category);
+         }
+     }
 }

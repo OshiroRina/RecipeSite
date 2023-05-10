@@ -12,7 +12,8 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
-import { aliases, fa } from 'vuetify/iconsets/fa'
+import { aliases, fa } from 'vuetify/iconsets/fa';
+import store from "@/store/index.js";
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
@@ -23,6 +24,7 @@ createInertiaApp({
         const vuetify = createVuetify({ components, directives ,iconfont: 'mdi',
             });
         return createApp({ render: () => h(App, props) })
+            .use(store)
             .use(plugin)
             .use(ZiggyVue, Ziggy)
             .use(vuetify)
