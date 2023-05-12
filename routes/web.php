@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TopSiteController;
+use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -31,8 +32,12 @@ Route::get('/', function () {
 // })//->middleware(['auth:users', 'verified'])
 // ->name('dashboard');
 
-Route::get('/topSite', [TopSiteController::class, 'index'])->name('topSite.index');
-Route::get('/recipeDetail', [TopSiteController::class, 'show'])->name('recipe.show');
+Route::get('/topSite', [RecipeController::class, 'index'])->name('topSite.index');
+Route::get('/recipeSearch', [RecipeController::class, 'search'])->name('recipe.search');
+Route::get('/recipeDetail/{id}', [RecipeController::class, 'show'])->name('recipe.show');
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

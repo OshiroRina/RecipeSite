@@ -7,12 +7,19 @@ const drawer = ref(false);
 
 const items = [
     {
-        title: 'Categorias',
+        title: 'Inicio',
+        value: 'Inicio',
+        link :  '/topSite'
+    },
+    {
+        title: 'Categorias de Recetas',
         value: 'Categorias',
+        link :  '/recipeSearch'
     },
     {
         title: 'Contacto',
         value: 'Contacto',
+        link : '/contact'
     },
 ];
 </script>
@@ -48,7 +55,36 @@ const items = [
 
     </v-app-bar>
 
+    <!-- <v-navigation-drawer v-model="drawer" location="left" temporary>
+        <v-flex mb-2>
+        <v-list>
+            <v-list-tile>Categorias</v-list-tile>
+            <v-list-tile :to="'/contact'">Contacto</v-list-tile>
+        </v-list>
+    </v-flex>
+    </v-navigation-drawer> -->
+
     <v-navigation-drawer v-model="drawer" location="left" temporary>
-        <v-list :items="items"></v-list>
+
+      <v-divider></v-divider>
+
+      <v-list
+        dense
+        nav
+      >
+        <v-list-item
+          v-for="item in items"
+          :key="item.title"
+          :href="item.link"
+        >
+          <!-- <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon> -->
+
+          <!-- <v-list-item-content> -->
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          <!-- </v-list-item-content> -->
+        </v-list-item>
+      </v-list>
     </v-navigation-drawer>
 </template>

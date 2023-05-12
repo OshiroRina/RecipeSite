@@ -15,7 +15,7 @@ import { Link } from '@inertiajs/vue3';
     <div>
         <v-app>
             <Header />
-            <div class="min-h-screen bg-white" style="background: url('/storage/images/background.png')">
+            <div class="min-h-screen bg-gray-200">
                 <!-- Page Content -->
                 <main>
                     <slot />

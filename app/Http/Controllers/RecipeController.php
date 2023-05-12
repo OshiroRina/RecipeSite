@@ -8,7 +8,7 @@ use App\Models\Recipe;
 use App\Models\RecipeDetail;
 use App\Models\SecondaryCategory;
 
-class TopSiteController extends Controller
+class RecipeController extends Controller
 {
     public function index()
     {
@@ -20,17 +20,26 @@ class TopSiteController extends Controller
 
     }
 
-    public function show(Request $request)
+    public function search(Request $request)
     {
         $categories = Recipe::with('secondary_category','recipe_details')
         ->searchCategory($request->search_category)
         ->get();
 
-        // dd($categories);
-
-        return Inertia::render('User/RecipeDetail', [
+        return Inertia::render('User/RecipeSearch', [
             'categories' => $categories,
         ]);
 
+    }
+
+    public function show($id)
+    {
+        $recipe = Recipe::with('secondary_category','recipe_details')
+        ->where('id',$id)
+        ->first();
+
+        return Inertia::render('User/RecipeDetail', [
+            'recipe' => $recipe,
+        ]);
     }
 }
