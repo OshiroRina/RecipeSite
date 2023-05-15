@@ -9,17 +9,20 @@ const items = [
   {
     title: 'Inicio',
     value: 'Inicio',
-    link: '/topSite'
+    link: '/topSite',
+    icon:'mdi-home'
   },
   {
     title: 'Categorias de Recetas',
     value: 'Categorias',
-    link: '/recipeSearch'
+    link: '/recipeSearch',
+    icon: 'mdi-table-arrow-up'
   },
   {
     title: 'Contacto',
     value: 'Contacto',
-    link: '/contact'
+    link: '/contact',
+    icon: 'mdi-email'
   },
 ];
 
@@ -80,14 +83,16 @@ const searchRecipes = () => {
     <v-divider></v-divider>
 
     <v-list dense nav>
-      <v-list-item v-for="item in items" :key="item.title" :href="item.link">
-        <!-- <v-list-item-icon>
+      <v-list-item v-for="item in items" :key="item.title" :href="item.link" >
+        <div class="flex align-center">
+        <!-- <v-list-item-icon > -->
             <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon> -->
+          <!-- </v-list-item-icon> -->
 
         <!-- <v-list-item-content> -->
-        <v-list-item-title>{{ item.title }}</v-list-item-title>
+        <v-list-item-title class="mx-3 text-gray-600" style="font-size:15px; font-weight: bold;">{{ item.title }}</v-list-item-title>
         <!-- </v-list-item-content> -->
+      </div>
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
