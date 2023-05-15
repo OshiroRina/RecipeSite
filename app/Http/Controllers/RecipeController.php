@@ -24,7 +24,10 @@ class RecipeController extends Controller
     {
         $categories = Recipe::with('secondary_category','recipe_details')
         ->searchCategory($request->search_category)
+        ->searchWord($request->search_word)
         ->get();
+
+        // dd($categories);
 
         return Inertia::render('User/RecipeSearch', [
             'categories' => $categories,

@@ -33,10 +33,19 @@ class Recipe extends Model
         return $this->hasMany(RecipeDetail::class);
     }
 
+    // カテゴリー検索
     public function scopeSearchCategory($query, $search_category = null)
     {
          if(!empty($search_category)){
             return $query->where('secondary_category_id','=', $search_category);
+         }
+     }
+
+    // ワード検索
+     public function scopeSearchWord($query, $search_word = null)
+    {
+         if(!empty($search_word)){
+            return $query->where('recipes.name', 'like', '%'. $search_word . '%');
          }
      }
 }
