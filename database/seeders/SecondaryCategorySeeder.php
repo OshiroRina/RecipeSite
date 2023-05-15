@@ -25,7 +25,7 @@ class SecondaryCategorySeeder extends Seeder
                 'primary_category_id' => 1,
             ],
             [
-                'name' => 'Huevos',
+                'name' => 'Verdura',
                 'primary_category_id' => 1,
             ],
             [
@@ -34,6 +34,26 @@ class SecondaryCategorySeeder extends Seeder
             ],
             [
                 'name' => 'Fideos',
+                'primary_category_id' => 2,
+            ],
+            [
+                'name' => 'Pasta',
+                'primary_category_id' => 2,
+            ],
+            [
+                'name' => 'Sopa',
+                'primary_category_id' => 2,
+            ],
+            [
+                'name' => 'Obento',
+                'primary_category_id' => 2,
+            ],
+            [
+                'name' => 'Dulces',
+                'primary_category_id' => 2,
+            ],
+            [
+                'name' => 'Ensalada',
                 'primary_category_id' => 2,
             ]
         ]);

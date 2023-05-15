@@ -27,8 +27,6 @@ class RecipeController extends Controller
         ->searchWord($request->search_word)
         ->get();
 
-        // dd($categories);
-
         return Inertia::render('User/RecipeSearch', [
             'categories' => $categories,
         ]);

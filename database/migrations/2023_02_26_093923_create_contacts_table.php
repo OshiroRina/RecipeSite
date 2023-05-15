@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('tel_no')->nullable();
+            // $table->string('tel_no')->nullable();
             $table->string('email');
-            $table->text('context')->nullable();
+            $table->string('subject')->nullable();
+            $table->text('context');
             $table->boolean('replay_flag');
             $table->timestamps();
         });

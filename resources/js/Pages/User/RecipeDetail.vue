@@ -6,7 +6,7 @@ import UserLayout from "@/Layouts/UserLayout.vue";
 const props = defineProps({
     recipe: Array,
 });
-// console.log(props.recipe)
+console.log(props.recipe)
 
 </script>
 
@@ -51,7 +51,7 @@ const props = defineProps({
                 </v-card>
                 <Link
                     as="button"
-                    :href="route('user.topSite.index')"
+                    :href="route('user.recipe.search')"
                     class="bg-gray-500 text-white px-10 py-2 rounded hover:opacity-75 mr-2 mt-5"
                     cols="12">
                     volver

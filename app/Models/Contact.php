@@ -11,7 +11,7 @@ class Contact extends Model
 
     protected $fillable = [
         'name',
-        'tel_no',
+        'subject',
         'email',
         'context',
         'replay_flag',
