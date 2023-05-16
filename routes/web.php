@@ -18,21 +18,16 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('User/Welcome', [
-        'canLogin' => Route::has('user.login'),
-        'canRegister' => Route::has('user.register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+// Route::get('/', function () {
+//     return Inertia::render('User/Welcome', [
+//         'canLogin' => Route::has('user.login'),
+//         'canRegister' => Route::has('user.register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
 
-// Route::get('/dashboard', function () {
-//     return Inertia::render('User/Dashboard');
-// })//->middleware(['auth:users', 'verified'])
-// ->name('dashboard');
-
-Route::get('/topSite', [RecipeController::class, 'index'])->name('topSite.index');
+Route::get('/', [RecipeController::class, 'index'])->name('topSite.index');
 Route::get('/recipeSearch', [RecipeController::class, 'search'])->name('recipe.search');
 Route::get('/recipeDetail/{id}', [RecipeController::class, 'show'])->name('recipe.show');
 

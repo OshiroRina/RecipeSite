@@ -10,7 +10,7 @@ const items = [
     title: 'Inicio',
     value: 'Inicio',
     link: '/topSite',
-    icon:'mdi-home'
+    icon: 'mdi-home'
   },
   {
     title: 'Recetas',
@@ -47,7 +47,7 @@ const searchRecipes = () => {
       <v-menu v-if="$page.props.auth.user">
         <template v-slot:activator="{ props }">
           <v-btn color="white" v-bind="props" style="font-family: 'Noto Serif', serif;">
-            {{ $page.props.auth.user.name }}さん
+            {{ $page.props.auth.user.name }}
           </v-btn>
         </template>
         <v-list class="flex justify-center">
@@ -57,7 +57,13 @@ const searchRecipes = () => {
           </v-list-item>
         </v-list>
       </v-menu>
+      <!-- ログインしてないときの表示 -->
+      <div v-if="!$page.props.auth.user" class="mt-2">
+        <Link :href="route('user.login')" class="text-sm text-white dark:text-gray-500 underline mx-5">Log in</Link>
+      </div>
     </div>
+
+    <!-- 検索フォーム -->
     <div v-show="searchBtn">
       <form action="" @submit.prevent="searchRecipes">
         <input type="text" name="search" v-model="search" placeholder="Buscar Recetas"
@@ -69,30 +75,20 @@ const searchRecipes = () => {
 
   </v-app-bar>
 
-  <!-- <v-navigation-drawer v-model="drawer" location="left" temporary>
-        <v-flex mb-2>
-        <v-list>
-            <v-list-tile>Categorias</v-list-tile>
-            <v-list-tile :to="'/contact'">Contacto</v-list-tile>
-        </v-list>
-    </v-flex>
-    </v-navigation-drawer> -->
-
   <v-navigation-drawer v-model="drawer" location="left" temporary>
-
     <v-divider></v-divider>
-
     <v-list dense nav>
-      <v-list-item v-for="item in items" :key="item.title" :href="item.link" >
+      <v-list-item v-for="item in items" :key="item.title" :href="item.link">
         <div class="flex align-center">
-        <!-- <v-list-item-icon > -->
-            <v-icon>{{ item.icon }}</v-icon>
+          <!-- <v-list-item-icon > -->
+          <v-icon>{{ item.icon }}</v-icon>
           <!-- </v-list-item-icon> -->
 
-        <!-- <v-list-item-content> -->
-        <v-list-item-title class="mx-3 text-gray-600" style="font-size:15px; font-weight: bold;">{{ item.title }}</v-list-item-title>
-        <!-- </v-list-item-content> -->
-      </div>
+          <!-- <v-list-item-content> -->
+          <v-list-item-title class="mx-3 text-gray-600"
+            style="font-size:15px; font-weight: bold;">{{ item.title }}</v-list-item-title>
+          <!-- </v-list-item-content> -->
+        </div>
       </v-list-item>
     </v-list>
   </v-navigation-drawer>

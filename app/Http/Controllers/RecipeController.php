@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Models\Recipe;
 use App\Models\RecipeDetail;
 use App\Models\SecondaryCategory;
+use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {

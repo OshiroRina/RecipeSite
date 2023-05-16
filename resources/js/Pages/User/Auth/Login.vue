@@ -34,33 +34,36 @@ const submit = () => {
         </div>
 
         <form @submit.prevent="submit">
-            <div class="pb-3">ユーザーログイン</div>
+            <div class="pb-3">Usuario Login</div>
             <div>
-                <InputLabel for="email" value="メールアドレス" />
+                <InputLabel for="email" value="correo electronico" />
                 <TextInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="パスワード" />
+                <InputLabel for="password" value="contraseña" />
                 <TextInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
-            <div class="block mt-4">
+            <!-- <div class="block mt-4">
                 <label class="flex items-center">
                     <Checkbox name="remember" v-model:checked="form.remember" />
                     <span class="ml-2 text-sm text-gray-600">保存する</span>
                 </label>
-            </div>
+            </div> -->
 
             <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('user.password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    パスワードをお忘れの方
+                <!-- <Link v-if="canResetPassword" :href="route('user.password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                    Si se le olvidó la contraseña
+                </Link> -->
+                 <Link :href="route('user.register')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                    Registrarse
                 </Link>
 
                 <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    ログイン
+                    Log in
                 </PrimaryButton>
             </div>
         </form>
