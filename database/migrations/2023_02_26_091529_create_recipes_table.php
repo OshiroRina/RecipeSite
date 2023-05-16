@@ -21,6 +21,15 @@ return new class extends Migration
             $table->text('information')->nullable();
             $table->text('text')->nullable();
             $table->string('image')->nullable();
+            $table->string('ingredient1')->nullable();
+            $table->string('ingredient2')->nullable();
+            $table->string('ingredient3')->nullable();
+            $table->string('ingredient4')->nullable();
+            $table->string('ingredient5')->nullable();
+            $table->string('ingredient6')->nullable();
+            $table->string('ingredient7')->nullable();
+            $table->string('ingredient8')->nullable();
+            $table->string('ingredient9')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -45,6 +45,15 @@ const form = useForm({
     detail_title10: '',
     detail_explanation10: '',
     detail_image10: '',
+    ingredient1:'',
+    ingredient2:'',
+    ingredient3:'',
+    ingredient4:'',
+    ingredient5:'',
+    ingredient6:'',
+    ingredient7:'',
+    ingredient8:'',
+    ingredient9:'',
 });
 
 const rules = {
@@ -105,6 +114,33 @@ const activeSubmit = async () => {
                             <v-row>
                                 <v-col><v-textarea v-model="form.text" label="備考" hide-details="auto"
                                         required></v-textarea></v-col>
+                            </v-row>
+                        </div>
+                        <div class="text-lg font-bold bg-gray-400 px-10 mx-10 text-white">材料</div>
+                        <div class="m-10">
+                            <v-row>
+                                <v-col><v-text-field v-model="form.ingredient1" label="材料１" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
+                                <v-col><v-text-field v-model="form.ingredient2" label="材料2" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
+                                        <v-col><v-text-field v-model="form.ingredient3" label="材料3" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col><v-text-field v-model="form.ingredient4" label="材料4" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
+                                <v-col><v-text-field v-model="form.ingredient5" label="材料5" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
+                                        <v-col><v-text-field v-model="form.ingredient6" label="材料6" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col><v-text-field v-model="form.ingredient7" label="材料7" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
+                                <v-col><v-text-field v-model="form.ingredient8" label="材料8" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
+                                        <v-col><v-text-field v-model="form.ingredient9" label="材料9" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
                             </v-row>
                         </div>
                         <div class="text-lg font-bold bg-gray-400 px-10 mx-10 text-white">工程</div>
