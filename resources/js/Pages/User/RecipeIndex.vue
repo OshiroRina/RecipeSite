@@ -24,23 +24,13 @@ const searchRecipes = async () => {
 
     <UserLayout>
         <Slider />
-        <div class="py-14">
-            <div class="max-w-7xl mx-auto text-white elevation-5 font-bold py-2 sm:px-6 lg:px-8 rounded"
-                style="background: #EADDA6;">
-                Presentación
-            </div>
-            <div class="h-500 max-w-6xl mx-auto py-20">
-                Text
-            </div>
-        </div>
-        <div class="pb-14">
-            <div class="max-w-7xl mx-auto text-white elevation-5 font-bold py-2 sm:px-6 lg:px-8 rounded"
+        <div class="pb-5">
+            <div class="max-w-7xl mx-auto text-white elevation-5 font-bold py-2 mt-8 sm:px-6 lg:px-8 rounded"
                 style="background: #EADDA6;">
                 Categorias
             </div>
             <v-card class="max-w-7xl mx-auto mt-10">
                 <div class="h-500 max-w-6xl mx-auto py-10">
-
                     <v-row class="pb-10">
                         <!-- <Link :href="route('admin.recipe.edit', { id: recipe.id })" class="text-blue hover:opacity-75"> -->
                         <v-col class="flex border-gray-400 mr-2 align-center bg-gray-200 hover:bg-gray-300 shadow">
@@ -180,6 +170,22 @@ const searchRecipes = async () => {
                     </v-row>
                 </div>
             </v-card>
+        </div>
+        <div class="py-14">
+            <div class="max-w-7xl mx-auto text-white elevation-5 font-bold py-2 sm:px-6 lg:px-8 rounded"
+                style="background: #EADDA6;">
+                Presentación
+            </div>
+            <div class="flex max-w-7xl mx-auto py-20 text-gray-600">
+               <div class="text-lg w-2/3 bg-gray-100 rounded py-10 px-5">
+                En realidad, hay muchas variedades en el mundo de la comida japonesa a parte de Sushi, Ramen...etc.<br>
+                Deseamos que conozca más de comida japonesa y se encuentre un nuevo descubrimineto.<br>
+                ¡Que disfrute!
+               </div>
+               <div class="w-1/3 mx-10">
+                <img :src="'/storage/images/explainFoto.jpg'" class="w-80">
+               </div>
+            </div>
         </div>
     </UserLayout>
 </template>

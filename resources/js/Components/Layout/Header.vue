@@ -13,8 +13,8 @@ const items = [
     icon:'mdi-home'
   },
   {
-    title: 'Categorias de Recetas',
-    value: 'Categorias',
+    title: 'Recetas',
+    value: 'Recetas',
     link: '/recipeSearch',
     icon: 'mdi-table-arrow-up'
   },
