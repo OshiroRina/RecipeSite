@@ -8,7 +8,7 @@ const props = defineProps({
     categories: Array,
     image_names: Array,
 });
-console.log(props.recipe.recipe_details[0])
+console.log(props.recipe)
 
 const form = useForm({
     name: props.recipe.name,
@@ -17,7 +17,16 @@ const form = useForm({
     details :props.recipe.recipe_details,
     main_image: '',
     image1: [],
-    _method: 'put'
+    _method: 'put',
+    ingredient1: props.recipe.ingredient1,
+    ingredient2:props.recipe.ingredient2,
+    ingredient3:props.recipe.ingredient3,
+    ingredient4:props.recipe.ingredient4,
+    ingredient5:props.recipe.ingredient5,
+    ingredient6:props.recipe.ingredient6,
+    ingredient7:props.recipe.ingredient7,
+    ingredient8:props.recipe.ingredient8,
+    ingredient9:props.recipe.ingredient9,
 });
 
 console.log(form.image1)
@@ -80,6 +89,33 @@ const activeSubmit = async () => {
                             <v-col v-if="form.main_image != null"><img :src="'/storage' + props.recipe.image" alt="" class="w-60"></v-col>
                         </v-row>
                     </div>
+                    <div class="text-lg font-bold bg-gray-400 px-10 mx-10 text-white">材料</div>
+                        <div class="m-10">
+                            <v-row>
+                                <v-col><v-text-field v-model="form.ingredient1" label="材料１" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
+                                <v-col><v-text-field v-model="form.ingredient2" label="材料2" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
+                                        <v-col><v-text-field v-model="form.ingredient3" label="材料3" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col><v-text-field v-model="form.ingredient4" label="材料4" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
+                                <v-col><v-text-field v-model="form.ingredient5" label="材料5" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
+                                        <v-col><v-text-field v-model="form.ingredient6" label="材料6" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col><v-text-field v-model="form.ingredient7" label="材料7" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
+                                <v-col><v-text-field v-model="form.ingredient8" label="材料8" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
+                                        <v-col><v-text-field v-model="form.ingredient9" label="材料9" outlined
+                                        class="compact-form " hide-details="auto"></v-text-field></v-col>
+                            </v-row>
+                        </div>
                     <div class="text-lg font-bold bg-gray-400 px-10 mx-10 text-white" v-if="props.recipe.recipe_details[0] != null">工程編集</div>
                     <section class="d-flex">
                         <div class="m-10 border p-3" v-for="detail,index in form.details" :key="detail.id">

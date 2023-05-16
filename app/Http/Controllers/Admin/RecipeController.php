@@ -70,6 +70,15 @@ class RecipeController extends Controller
                 'text' => $request->text ? $request->text : null,
                 'secondary_category_id' => $request->secondary_category ? $request->secondary_category : null,
                 'image' => $request->file('main_image') ? '/images'. '/' .  $image_dir . '/' . $request->file('main_image')[0]->getClientOriginalName() : null,
+                'ingredient1'=> $request->ingredient1,
+                'ingredient2'=> $request->ingredient2,
+                'ingredient3'=> $request->ingredient3,
+                'ingredient4'=> $request->ingredient4,
+                'ingredient5'=> $request->ingredient5,
+                'ingredient6'=> $request->ingredient6,
+                'ingredient7'=> $request->ingredient7,
+                'ingredient8'=> $request->ingredient8,
+                'ingredient9'=> $request->ingredient9,
             ]);
 
             //レシピ詳細テーブル登録
@@ -137,21 +146,10 @@ class RecipeController extends Controller
 
         $categories = SecondaryCategory::select('id','name')
                     ->get();
-        
-        // // dd($recipe->recipe_details);
-        // $image_names = [];
-        // for($i=0; count($recipe->recipe_details)>$i; $i++){
-        //     if(!empty($recipe->recipe_details[$i]->image1)){
-        //         $explode = explode("/",$recipe->recipe_details[$i]->image1);
-        //         $image_names[] = $explode[3];
-        //     }
-        // }
-        // // dd($image_names);
 
         return Inertia::render('Admin/Recipe/Edit', [
             'recipe' => $recipe,
             'categories' => $categories,
-            // 'image_names' => $image_names
         ]);
     }
 
@@ -183,6 +181,15 @@ class RecipeController extends Controller
             $recipe->name = $request->name ? $request->name : null;
             $recipe->information = $request->information ? $request->information : null;
             $recipe->secondary_category_id = is_Array($request->secondary_category) ? $request->secondary_category['id'] : $request->secondary_category;
+            $recipe->ingredient1= $request->ingredient1;
+            $recipe->ingredient2 = $request->ingredient2;
+            $recipe->ingredient3 = $request->ingredient3;
+            $recipe->ingredient4 = $request->ingredient4;
+            $recipe->ingredient5 = $request->ingredient5;
+            $recipe->ingredient6 = $request->ingredient6;
+            $recipe->ingredient7 = $request->ingredient7;
+            $recipe->ingredient8 = $request->ingredient8;
+            $recipe->ingredient9 = $request->ingredient9;
             $recipe->save();
 
             //レシピ詳細テーブル更新
@@ -190,7 +197,6 @@ class RecipeController extends Controller
 
                 //画像データありでファイル名が異なる場合は保存
                 if(isset($request->file('image1')[$i])){
-                    // dd($request->file('image1')[$i]->getClientOriginalName());
                     $store_file_name = $recipe->recipe_details[$i]->image1;
                     $update_file_name = '/images' . '/' . 'recipe'.$id . '/' . $request->file('image1')[$i][0]->getClientOriginalName();
 
