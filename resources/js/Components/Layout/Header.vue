@@ -69,7 +69,6 @@ const searchRecipes = () => {
         <input type="text" name="search" v-model="search" placeholder="Buscar Recetas"
           class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:bg-transparent focus:ring-gray-200 focus:border-gray-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200" />
       </form>
-
     </div>
     <v-btn variant="text" icon="mdi-magnify" @click="searchBtn = !searchBtn"></v-btn>
 
