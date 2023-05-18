@@ -6,7 +6,7 @@ import UserLayout from "@/Layouts/UserLayout.vue";
 const props = defineProps({
     recipe: Object,
 });
-console.log(props.recipe)
+// console.log(props.recipe)
 
 </script>
 

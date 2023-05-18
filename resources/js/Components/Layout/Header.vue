@@ -9,7 +9,7 @@ const items = [
   {
     title: 'Inicio',
     value: 'Inicio',
-    link: '/topSite',
+    link: '/',
     icon: 'mdi-home'
   },
   {
@@ -38,8 +38,11 @@ const searchRecipes = () => {
   <v-app-bar style="background: #7F9172;" prominent>
     <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-    <v-toolbar-title class="text-center text-white" style="font-family: 'Noto Serif', serif;">Recetas de Comida
-      Japonesa</v-toolbar-title>
+    <Link :href="route('user.topSite.index')">
+      <v-toolbar-title class="text-center text-white mx-auto" style="font-family: 'Noto Serif', serif;">
+        Recetas de Comida Japonesa
+      </v-toolbar-title>
+    </Link>
 
     <v-spacer></v-spacer>
 

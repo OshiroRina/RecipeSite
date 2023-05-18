@@ -6,7 +6,7 @@ import UserLayout from "@/Layouts/UserLayout.vue";
 const props = defineProps({
     categories: Array,
 });
-console.log(props.categories)
+// console.log(props.categories)
 
 </script>
 
