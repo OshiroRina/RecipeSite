@@ -13,7 +13,6 @@ const deleteRecipe = (id) => {
 };
 
 </script>
-
 <template>
     <AdminAuthenticatedLayout>
 
@@ -41,12 +40,12 @@ const deleteRecipe = (id) => {
                     </thead>
                     <tbody>
                         <tr v-for="recipe in recipes" :key="recipe.id">
-                            <td>
+                            <td class="w-1/4">
                                 <Link :href="route('admin.recipe.edit', { id: recipe.id })" class="text-blue hover:opacity-75">
                                 {{ recipe.name }}</Link>
                             </td>
-                            <td>{{ recipe.information }}</td>
-                            <td>
+                            <td class="w-1/2 info">{{ recipe.information }}</td>
+                            <td class="w-1/4 text-right">
                                 <Link @click="deleteRecipe(recipe.id)"
                                 as="button"
                                 class="bg-red-500 text-white px-5 py-2 rounded hover:opacity-75 mr-2">
