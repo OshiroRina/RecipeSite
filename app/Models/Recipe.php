@@ -42,6 +42,11 @@ class Recipe extends Model
         return $this->hasMany(RecipeDetail::class);
     }
 
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
     // カテゴリー検索
     public function scopeSearchCategory($query, $search_category = null)
     {

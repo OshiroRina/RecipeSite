@@ -14,4 +14,9 @@ class Favorite extends Model
         'recipe_id',
         'created_at'
     ];
+
+    public function recipe()
+    {
+        return $this->belongsTo(Recipe::class);
+    }
 }

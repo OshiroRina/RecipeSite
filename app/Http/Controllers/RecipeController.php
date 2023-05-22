@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Models\Recipe;
 use App\Models\RecipeDetail;
 use App\Models\SecondaryCategory;
+use App\Models\Favorite;
 use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
@@ -23,13 +24,16 @@ class RecipeController extends Controller
 
     public function search(Request $request)
     {
-        $categories = Recipe::with('secondary_category','recipe_details')
+        $categories = Recipe::with('secondary_category','recipe_details','favorites')
         ->searchCategory($request->search_category)
         ->searchWord($request->search_word)
         ->get();
 
+        $user_id = Auth::id();
+
         return Inertia::render('User/RecipeSearch', [
             'categories' => $categories,
+            'user_id' => $user_id
         ]);
 
     }
