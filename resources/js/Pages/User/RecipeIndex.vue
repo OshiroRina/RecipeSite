@@ -31,7 +31,7 @@ const searchRecipes = async () => {
             </div>
             <v-card class="max-w-7xl mx-auto mt-10">
                 <div class="h-500 max-w-6xl mx-auto py-10">
-                    <v-row class="pb-10">
+                    <v-row class="pb-10 ">
                         <v-col class="flex border-gray-400 mr-2 align-center bg-gray-200 hover:bg-gray-300 shadow">
                             <input type="radio" :id="0" name="categories" :value="0" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />

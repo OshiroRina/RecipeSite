@@ -27,26 +27,35 @@ const items = [
 ];
 
 const searchBtn = ref(false);
+const title = ref(true);
 
 const search = ref("");
 const searchRecipes = () => {
   router.get("/recipeSearch", { search_word: search.value });
 };
 </script>
-
 <template>
   <v-app-bar style="background: #7F9172;" prominent>
     <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
     <Link :href="route('user.topSite.index')">
-      <v-toolbar-title class="text-center text-white mx-auto" style="font-family: 'Noto Serif', serif;">
-        Recetas de Comida Japonesa
-      </v-toolbar-title>
+    <v-toolbar-title class="hidden md:flex lg:flex text-center text-white mx-auto title"
+      style="font-family: 'Noto Serif', serif;">
+      <span class="text-sm md:text-lg lg:text-lg">Recetas de Comida Japonesa</span>
+    </v-toolbar-title>
+    </Link>
+
+    <!-- モバイル用 -->
+    <Link :href="route('user.topSite.index')" v-show="title">
+    <v-toolbar-title class="flex md:hidden lg:hidden text-center text-white mx-auto title"
+      style="font-family: 'Noto Serif', serif;">
+      <span class="text-sm md:text-lg lg:text-lg">Recetas de Comida Japonesa</span>
+    </v-toolbar-title>
     </Link>
 
     <v-spacer></v-spacer>
 
-    <div class="d-flex justify-space-around">
+    <div class="flex justify-space-around">
       <v-menu v-if="$page.props.auth.user">
         <template v-slot:activator="{ props }">
           <v-btn color="white" v-bind="props" style="font-family: 'Noto Serif', serif;">
@@ -61,11 +70,12 @@ const searchRecipes = () => {
         </v-list>
       </v-menu>
       <!-- ログインしてないときの表示 -->
-      <div v-if="!$page.props.auth.user" class="mt-2">
-        <Link :href="route('user.login')" class="text-sm text-white dark:text-gray-500 underline mx-5">Log in</Link>
+      <div v-if="!$page.props.auth.user" class="hidden md:flex lg:flex">
+        <Link as="button" :href="route('user.login')"
+          class="text-sm text-white dark:text-gray-500 underline md:mx-5 lg:mx-5">Log in
+        </Link>
       </div>
     </div>
-
     <!-- 検索フォーム -->
     <div v-show="searchBtn">
       <form action="" @submit.prevent="searchRecipes">
@@ -73,7 +83,7 @@ const searchRecipes = () => {
           class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:bg-transparent focus:ring-gray-200 focus:border-gray-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200" />
       </form>
     </div>
-    <v-btn variant="text" icon="mdi-magnify" @click="searchBtn = !searchBtn"></v-btn>
+    <v-btn variant="text" icon="mdi-magnify" @click="searchBtn = !searchBtn, title = !title"></v-btn>
 
   </v-app-bar>
 
@@ -93,5 +103,9 @@ const searchRecipes = () => {
         </div>
       </v-list-item>
     </v-list>
-  </v-navigation-drawer>
-</template>
+
+    <!-- モバイル用ログインリンク -->
+    <Link :href="route('user.login')" class="flex md:hidden lg:hidden mx-5 text-gray-600 hover:opacity-75">
+    <div style="font-size:15px; font-weight: bold;">Log In</div>
+    </Link>
+  </v-navigation-drawer></template>
