@@ -46,7 +46,7 @@ Route::post('/favorite', function (Request $request) {
 
 
 // お気に入りボタンを押したときの動作
-Route::middleware('auth:sanctum')->post('/favorite/create', function (Request $request) {
+Route::post('/favorite/create', function (Request $request) {
 
     // $favorite_status = $request->favorite;
     $user_id = Auth::id();
