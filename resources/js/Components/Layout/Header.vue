@@ -7,19 +7,19 @@ const drawer = ref(false);
 
 const items = [
   {
-    title: 'Inicio',
+    title: 'Inicio (トップページ)',
     value: 'Inicio',
     link: '/',
     icon: 'mdi-home'
   },
   {
-    title: 'Recetas',
+    title: 'Recetas (レシピ)',
     value: 'Recetas',
     link: '/recipeSearch',
     icon: 'mdi-table-arrow-up'
   },
   {
-    title: 'Contacto',
+    title: 'Contacto (お問い合わせ)',
     value: 'Contacto',
     link: '/contact',
     icon: 'mdi-email'

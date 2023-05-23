@@ -18,7 +18,7 @@ const props = defineProps({
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white px-10 mb-5">
                     <div class="mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                        <h2 class="text-2xl font-bold tracking-tight text-gray-900">Recetas</h2>
+                        <div class="text-2xl font-bold tracking-tight text-gray-900">Recetas (レシピ)</div>
                         <!-- 検索結果無しの場合 -->
                         <div v-if="props.categories[0] == null" class="pt-10 text-lg text-gray-500">No hay resultados para tu búsqueda.</div>
                         <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">

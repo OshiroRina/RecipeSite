@@ -17,11 +17,15 @@ const closeModal = () => {
         </template>
         <v-card>
             <v-card-title class="pt-4">
-                <span class="text-h6">Informacion</span>
+                <span class="text-h6">Informacion (お知らせ)</span>
             </v-card-title>
             <v-card-text>
-                <div>Se requeire registracion para likes.<br>
-                    <div class="font-bold">Quiere registrarse ahora?</div>
+                <div>Se requeire registracion para utilizar likes. <br>
+                    <div class="font-bold mb-3">Quiere registrarse ahora? </div>
+                    <div class="text-sm">
+                        <p>お気に入り機能を使用するためには、会員登録が必要です。</p>
+                        <p>会員登録しますか？</p>
+                    </div>
                 </div>
             </v-card-text>
             <div class="flex items-center justify-end m-4">
@@ -38,5 +42,4 @@ const closeModal = () => {
                 </button>
             </div>
         </v-card>
-    </v-dialog>
-</template>
+    </v-dialog></template>
