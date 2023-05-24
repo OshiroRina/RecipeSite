@@ -20,10 +20,10 @@ const props = defineProps({
                         </v-col>
                     </v-row>
                     <v-row class="align-center">
-                        <v-col v-if="props.recipe.image != null"><img :src="'/storage' + props.recipe.image" alt=""
+                        <v-col cols="12" md="4" v-if="props.recipe.image != null"><img :src="'/storage' + props.recipe.image" alt=""
                                 class="w-80"></v-col>
                         <v-col v-else><img :src="'/storage/images/NoImage.png'" alt="" class="w-80"></v-col>
-                        <v-col>
+                        <v-col cols="12" md="6">
                             <ul class="bg-gray-200">
                                 <div class="flex font-bold align-center mb-5 bg-yellow-100 p-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5">
@@ -51,12 +51,12 @@ const props = defineProps({
                                 readonly style=" pointer-events: none;"></v-textarea></v-col>
                     </v-row>
                 </div>
-                <div class="text-lg font-bold bg-gray-400 px-10 mx-10 mb-4 text-white rounded">¿Cómo hacer? (作り方)</div>
+                <div class="text-lg font-bold bg-gray-400 px-10 mx-2 md:mx-10 mb-4 text-white rounded">¿Cómo hacer? (作り方)</div>
                 <section class="flex">
-                    <div class="mb-10 mx-auto py-5 px-5 border">
+                    <div class="mb-10 mx-auto py-5 px-5">
                         <v-row>
-                            <v-col cols="4" v-for="detail in props.recipe.recipe_details" :key="detail.id"
-                                class="px-5 mb-3">
+                            <v-col cols="12" md="4" v-for="detail in props.recipe.recipe_details" :key="detail.id"
+                                class="px-5 mb-3 border md:border-none">
                                 <v-row>
                                     <v-col><v-text-field v-model="detail.title" label="paso" outlined class="compact-form "
                                             hide-details="auto" readonly
@@ -76,7 +76,7 @@ const props = defineProps({
                 </section>
             </v-card>
             <Link as="button" :href="route('user.recipe.search')"
-                class="bg-gray-500 text-white px-10 py-2 rounded hover:opacity-75 mr-2 mt-5" cols="12">
+                class="bg-gray-500 text-white px-10 py-2 rounded hover:opacity-75 mr-2 mt-5 mx-2" cols="12">
               volver
             </Link>
     </div>

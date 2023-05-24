@@ -76,7 +76,7 @@ const activeSubmit = async () => {
                 </div>
             </v-card>
             <Link as="button" :href="route('user.topSite.index')"
-                class="bg-gray-500 text-white px-10 py-2 rounded hover:opacity-75 mr-2 mt-5" cols="12">
+                class="bg-gray-500 text-white px-10 py-2 rounded hover:opacity-75 mr-2 mt-5 mx-2" cols="12">
             volver
             </Link>
         </div>

@@ -9,7 +9,7 @@ const slides = [{ src: '/storage/images/primeraFoto.jpg' },
 const colors = ['grey-lighten-3'];
 </script>
 <template>
-  <div class="bg-gray-100 py-5">
+  <div class="bg-gray-100 md:py-5">
     <!-- <v-sheet
           :color="colors[0]"
           height="100%"
@@ -19,7 +19,7 @@ const colors = ['grey-lighten-3'];
 
       <v-carousel-item v-for="(slide, i) in slides" :key="i" :src="slide.src">
 
-        <div class="flex fill-height justify-center align-center w-full" style="object-fit: fill;">
+        <div class="flex fill-height justify-center align-center">
           <img :src="slide.src">
         </div>
 

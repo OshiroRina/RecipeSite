@@ -24,15 +24,16 @@ const searchRecipes = async () => {
 
     <UserLayout>
         <Slider />
-        <div class="pb-5">
-            <div class="max-w-7xl mx-auto text-white elevation-5 font-bold py-2 mt-8 sm:px-6 lg:px-8 rounded"
+        <div class="py-5">
+            <div class="w-full px-5 md:max-w-7xl mx-auto text-white elevation-5 font-bold py-2 mx-10 my-5 lg:px-8 rounded"
                 style="background: #EADDA6;">
                 Categorias (カテゴリー)
             </div>
-            <v-card class="max-w-7xl mx-auto mt-10">
-                <div class="h-500 max-w-6xl mx-auto py-10">
-                    <v-row class="pb-10 ">
-                        <v-col class="flex border-gray-400 mr-2 align-center bg-gray-200 hover:bg-gray-300 shadow">
+            <v-card class="max-w-7xl mx-auto sm:mt-5 md:mt-10">
+                <div class="py-10 mx-auto">
+                    <v-row class="mx-5 md:pb-2">
+                        <v-col cols="12" md="3"
+                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
                             <input type="radio" :id="0" name="categories" :value="0" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="0"
@@ -46,7 +47,8 @@ const searchRecipes = async () => {
                                 <FontAwesomeIcon icon="angle-right" />
                             </label>
                         </v-col>
-                        <v-col class="flex border-gray-400 mr-2 align-center bg-gray-200 hover:bg-gray-300 shadow">
+                        <v-col cols="12" md="3"
+                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
                             <input type="radio" :id="1" name="categories" :value="1" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="1"
@@ -59,7 +61,8 @@ const searchRecipes = async () => {
                                 <FontAwesomeIcon icon="angle-right" />
                             </label>
                         </v-col>
-                        <v-col class="flex border-gray-400 mr-2 align-center bg-gray-200 hover:bg-gray-300 shadow">
+                        <v-col cols="12" md="3"
+                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
                             <input type="radio" :id="2" name="categories" :value="2" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="2"
@@ -72,21 +75,8 @@ const searchRecipes = async () => {
                                 <FontAwesomeIcon icon="angle-right" />
                             </label>
                         </v-col>
-                        <v-col class="flex border-gray-400 mr-2 align-center bg-gray-200 hover:bg-gray-300 shadow">
-                            <input type="radio" :id="3" name="categories" :value="3" v-model="form.search_category"
-                                @change.prevent="searchRecipes" class="hidden peer" />
-                            <label :for="3"
-                                class="flex text-base py-2 text-center align-center font-bold px-3 w-full hover:bg-primary-light cursor-pointer">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                    class="w-5">
-                                    <path
-                                        d="M428.3 3c11.6-6.4 26.2-2.3 32.6 9.3l4.8 8.7c19.3 34.7 19.8 75.7 3.4 110C495.8 159.6 512 197.9 512 240c0 18.5-3.1 36.3-8.9 52.8c-6.1 17.3-28.5 16.3-36.8-.1l-11.7-23.4c-4.1-8.1-12.4-13.3-21.5-13.3H360c-13.3 0-24-10.7-24-24V152c0-13.3-10.7-24-24-24l-17.1 0c-21.3 0-30-23.9-10.8-32.9C304.7 85.4 327.7 80 352 80c28.3 0 54.8 7.3 77.8 20.2c5.5-18.2 3.7-38.4-6-55.8L419 35.7c-6.4-11.6-2.3-26.2 9.3-32.6zM171.2 345.5L264 160l40 0v80c0 26.5 21.5 48 48 48h76.2l23.9 47.8C372.3 443.9 244.3 512 103.2 512H44.4C19.9 512 0 492.1 0 467.6c0-20.8 14.5-38.8 34.8-43.3l49.8-11.1c37.6-8.4 69.5-33.2 86.7-67.7z" />
-                                </svg>
-                                <span class="px-3">Verduras (野菜)</span>
-                                <FontAwesomeIcon icon="angle-right" />
-                            </label>
-                        </v-col>
-                        <v-col class="flex border-gray-400 mr-2 align-center bg-gray-200 hover:bg-gray-300 shadow">
+                        <v-col cols="12" md="3"
+                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
                             <input type="radio" :id="4" name="categories" :value="4" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="4"
@@ -101,8 +91,9 @@ const searchRecipes = async () => {
                             </label>
                         </v-col>
                     </v-row>
-                    <v-row>
-                        <v-col class="flex border-gray-400 mr-2 align-center bg-gray-200 hover:bg-gray-300 shadow">
+                    <v-row class="mx-5 md:pb-2">
+                        <v-col cols="12" md="3"
+                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
                             <input type="radio" :id="5" name="categories" :value="5" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="5"
@@ -112,7 +103,8 @@ const searchRecipes = async () => {
                                 <FontAwesomeIcon icon="angle-right" />
                             </label>
                         </v-col>
-                        <v-col class="flex border-gray-400 mr-2 align-center bg-gray-200 hover:bg-gray-300 shadow">
+                        <v-col cols="12" md="3"
+                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
                             <input type="radio" :id="6" name="categories" :value="6" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="6"
@@ -125,7 +117,8 @@ const searchRecipes = async () => {
                                 <FontAwesomeIcon icon="angle-right" />
                             </label>
                         </v-col>
-                        <v-col class="flex border-gray-400 mr-2 align-center bg-gray-200 hover:bg-gray-300 shadow">
+                        <v-col cols="12" md="3"
+                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
                             <input type="radio" :id="7" name="categories" :value="7" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="7"
@@ -138,7 +131,8 @@ const searchRecipes = async () => {
                                 <FontAwesomeIcon icon="angle-right" />
                             </label>
                         </v-col>
-                        <v-col class="flex border-gray-400 mr-2 align-center bg-gray-200 hover:bg-gray-300 shadow">
+                        <v-col cols="12" md="3"
+                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
                             <input type="radio" :id="8" name="categories" :value="8" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="8"
@@ -151,13 +145,15 @@ const searchRecipes = async () => {
                                 <FontAwesomeIcon icon="angle-right" />
                             </label>
                         </v-col>
-                        <v-col class="flex border-gray-400 mr-2 align-center bg-gray-200 hover:bg-gray-300 shadow">
+                    </v-row>
+                    <v-row class="mx-5">
+                        <v-col cols="12" md="3"
+                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
                             <input type="radio" :id="9" name="categories" :value="9" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="9"
                                 class="flex text-base py-2 text-center align-center font-bold px-3 w-full hover:bg-primary-light cursor-pointer">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                    class="w-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5">
                                     <path
                                         d="M257.5 27.6c-.8-5.4-4.9-9.8-10.3-10.6c-22.1-3.1-44.6 .9-64.4 11.4l-74 39.5C89.1 78.4 73.2 94.9 63.4 115L26.7 190.6c-9.8 20.1-13 42.9-9.1 64.9l14.5 82.8c3.9 22.1 14.6 42.3 30.7 57.9l60.3 58.4c16.1 15.6 36.6 25.6 58.7 28.7l83 11.7c22.1 3.1 44.6-.9 64.4-11.4l74-39.5c19.7-10.5 35.6-27 45.4-47.2l36.7-75.5c9.8-20.1 13-42.9 9.1-64.9c-.9-5.3-5.3-9.3-10.6-10.1c-51.5-8.2-92.8-47.1-104.5-97.4c-1.8-7.6-8-13.4-15.7-14.6c-54.6-8.7-97.7-52-106.2-106.8zM208 144a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM144 336a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm224-64a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
                                 </svg>
@@ -169,21 +165,20 @@ const searchRecipes = async () => {
                 </div>
             </v-card>
         </div>
-        <div class="py-14">
-            <div class="max-w-7xl mx-auto text-white elevation-5 font-bold py-2 sm:px-6 lg:px-8 rounded"
+        <div class="py-3 md:mt-10">
+            <div class="w-full px-5 md:max-w-7xl mx-auto text-white elevation-5 font-bold mt-5 mb-8 py-2 sm:px-6 lg:px-8 rounded"
                 style="background: #EADDA6;">
                 Presentación (メッセージ)
             </div>
-            <div class="flex max-w-7xl mx-auto py-20 text-gray-600">
-               <div class="text-lg w-2/3 bg-gray-100 rounded py-10 px-5">
-                En realidad, hay muchas variedades en el mundo de la comida japonesa a parte de Sushi, Ramen...etc.<br>
-                Deseamos que conozca más de comida japonesa y se encuentre un nuevo descubrimineto.<br>
-                ¡Que disfrute!
-               </div>
-               <div class="w-1/3 mx-10">
-                <img :src="'/storage/images/explainFoto.jpg'" class="w-80">
-               </div>
+            <div class="md:flex max-w-7xl mx-auto pb-14 text-gray-600">
+                <div class="text-lg md:w-2/3 bg-gray-100 rounded py-10 px-5">
+                    En realidad, hay muchas variedades en el mundo de la comida japonesa a parte de Sushi, Ramen...etc.<br>
+                    Deseamos que conozca más de comida japonesa y se encuentre un nuevo descubrimineto.<br>
+                    ¡Que disfrute!
+                </div>
+                <div class="mt-5 md:w-1/3 mx-10">
+                <img :src="'/storage/images/explainFoto.jpg'" class="w-full md:w-80">
             </div>
         </div>
-    </UserLayout>
-</template>
+    </div>
+</UserLayout></template>
