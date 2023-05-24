@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactRequest;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Contact;
@@ -16,9 +17,8 @@ class ContactController extends Controller
 
     }
 
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        // dd($request);
         try{
             DB::beginTransaction();
 
@@ -34,14 +34,14 @@ class ContactController extends Controller
             DB::commit();
 
             return to_route('user.contact.index')->with([
-                'message' => 'Ha enviado su mensaje. Muchas gracias.',
+                'message' => 'Ha enviado su mensaje. Muchas gracias. (メッセージを送信しました。)',
                 'status' => 'success',
             ]);
 
         }catch(\Exception $e){
             DB::rollback();
             return to_route('user.contact.index')->with([
-                'message' => 'No ha podido enviar el mensaje.',
+                'message' => 'No ha podido enviar el mensaje.(メッセージを送信できませんでした。)',
                 'status' => 'danger',
             ]);
         }

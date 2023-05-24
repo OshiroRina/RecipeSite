@@ -20,16 +20,15 @@ const state = ref({
 
 const rules = {
     name: [
-        (v) => !!v || "Se requiere su nombre",
+        (v) => !!v || "Se requiere su nombre (お名前は必須です。)",
     ],
     email: [
-        (v) => !!v || "Se requiere su correo electrónico",
-        (v) => /.+@.+/.test(v) || "Por favor ingrese en formato de correo electronico",
+        (v) => !!v || "Se requiere su correo electrónico (メールアドレスは必須です。)",
+        (v) => /.+@.+/.test(v) || "Por favor ingrese en formato de correo electronico (メールアドレス形式で入力してください。)",
     ],
     context: [
         (v) => !!v || "Se requiere su mensaje",
-    ],
-
+    ]
 };
 
 const activeSubmit = async () => {
@@ -53,20 +52,20 @@ const activeSubmit = async () => {
                 <FlashMessage />
                 <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
                     <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-700 dark:text-white">
-                        Contáctenos</h2>
+                        Contáctenos (お問い合わせ)</h2>
                     <v-form ref="Form" @submit.prevent="activeSubmit" class="space-y-8">
                         <div>
-                            <v-text-field v-model="form.name" :rules="rules.name" label="Nombre" required></v-text-field>
+                            <v-text-field v-model="form.name" :rules="rules.name" label="Nombre (お名前)" required></v-text-field>
                         </div>
                         <div>
-                            <v-text-field v-model="form.email" :rules="rules.email" label="Correo electrónico"
+                            <v-text-field v-model="form.email" :rules="rules.email" label="Correo electrónico (メールアドレス)"
                                 required></v-text-field>
                         </div>
                         <div>
-                            <v-text-field v-model="form.subject" label="Asunto"></v-text-field>
+                            <v-text-field v-model="form.subject" label="Asunto (要件)"></v-text-field>
                         </div>
                         <div class="sm:col-span-2">
-                            <v-textarea counter label="Mensaje" :rules="rules.context" v-model="form.context"
+                            <v-textarea counter label="Mensaje (メッセージ)" :rules="rules.context" v-model="form.context"
                                 required></v-textarea>
                         </div>
                         <button method="post"
