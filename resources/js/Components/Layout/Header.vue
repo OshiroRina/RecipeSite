@@ -28,6 +28,7 @@ const items = [
 
 const searchBtn = ref(false);
 const title = ref(true);
+const favorite = ref(true);
 
 const search = ref("");
 const searchRecipes = () => {
@@ -55,23 +56,31 @@ const searchRecipes = () => {
 
     <v-spacer></v-spacer>
 
-    <div class="flex justify-space-around align-center">
-      <v-menu v-if="$page.props.auth.user">
-        <template v-slot:activator="{ props }">
-          <v-btn color="white" v-bind="props" style="font-family: 'Noto Serif', serif;">
-            {{ $page.props.auth.user.name }}
-          </v-btn>
-        </template>
-        <v-list class="flex justify-center">
-          <v-list-item class="hover:bg-gray-100">
-            <Link :href="route('user.logout')" method="post" as="button" style="font-family: 'Noto Serif', serif;">Logout
-            </Link>
-          </v-list-item>
-        </v-list>
-      </v-menu>
+    <div class="flex justify-space-around align-center text-xs">
+      <div class="hidden md:flex">
+        <v-menu v-if="$page.props.auth.user">
+          <template v-slot:activator="{ props }">
+            <v-btn color="white" v-bind="props" style="font-family: 'Noto Serif', serif;">
+              <span class="text-xs md:text-sm">{{ $page.props.auth.user.name }}</span>
+            </v-btn>
+          </template>
+          <v-list class="flex justify-center">
+            <v-list-item class="hover:bg-gray-100">
+              <Link :href="route('user.logout')" method="post" as="button" style="font-family: 'Noto Serif', serif;">
+              Logout
+              </Link>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
       <!-- お気に入り一覧へのリンク -->
-      <Link :href="route('user.favorite.index')" v-if="$page.props.auth.user" class="mx-2">
-        <v-icon color="gray" class="hover:opacity-75">mdi-heart</v-icon>
+      <Link :href="route('user.favorite.index')" v-if="$page.props.auth.user" class="hidden md:flex mx-2">
+      <v-icon color="gray" class="hover:opacity-75">mdi-heart</v-icon>
+      </Link>
+      <!-- お気に入り一覧へのリンク モバイル用 -->
+      <Link :href="route('user.favorite.index')" v-if="$page.props.auth.user" v-show="favorite"
+        class="flex md:hidden mx-2">
+      <v-icon color="gray" class="hover:opacity-75">mdi-heart</v-icon>
       </Link>
       <!-- ログインしてないときの表示 -->
       <div v-if="!$page.props.auth.user" class="hidden md:flex lg:flex">
@@ -87,7 +96,8 @@ const searchRecipes = () => {
           class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:bg-transparent focus:ring-gray-200 focus:border-gray-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200" />
       </form>
     </div>
-    <v-btn variant="text" icon="mdi-magnify" @click="searchBtn = !searchBtn, title = !title"></v-btn>
+    <v-btn variant="text" icon="mdi-magnify"
+      @click="searchBtn = !searchBtn, title = !title, favorite = !favorite"></v-btn>
 
   </v-app-bar>
 
@@ -109,7 +119,12 @@ const searchRecipes = () => {
     </v-list>
 
     <!-- モバイル用ログインリンク -->
-    <Link :href="route('user.login')" class="flex md:hidden lg:hidden mx-5 text-gray-600 hover:opacity-75">
+    <Link v-if="!$page.props.auth.user" :href="route('user.login')"
+      class="flex md:hidden lg:hidden mx-5 text-gray-600 hover:opacity-75">
     <div style="font-size:15px; font-weight: bold;">Log In</div>
     </Link>
-  </v-navigation-drawer></template>
+    <Link v-else :href="route('user.logout')" method="post" as="button"
+      class="flex md:hidden lg:hidden mx-5 text-gray-600 hover:opacity-75">
+  <div style="font-size:15px; font-weight: bold;">Log Out</div>
+  </Link>
+</v-navigation-drawer></template>
