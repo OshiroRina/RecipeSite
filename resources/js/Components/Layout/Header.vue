@@ -55,7 +55,7 @@ const searchRecipes = () => {
 
     <v-spacer></v-spacer>
 
-    <div class="flex justify-space-around">
+    <div class="flex justify-space-around align-center">
       <v-menu v-if="$page.props.auth.user">
         <template v-slot:activator="{ props }">
           <v-btn color="white" v-bind="props" style="font-family: 'Noto Serif', serif;">
@@ -69,6 +69,10 @@ const searchRecipes = () => {
           </v-list-item>
         </v-list>
       </v-menu>
+      <!-- お気に入り一覧へのリンク -->
+      <Link :href="route('user.favorite.index')" v-if="$page.props.auth.user" class="mx-2">
+        <v-icon color="gray" class="hover:opacity-75">mdi-heart</v-icon>
+      </Link>
       <!-- ログインしてないときの表示 -->
       <div v-if="!$page.props.auth.user" class="hidden md:flex lg:flex">
         <Link as="button" :href="route('user.login')"

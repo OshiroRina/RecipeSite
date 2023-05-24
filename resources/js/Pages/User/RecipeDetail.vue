@@ -4,11 +4,13 @@ import UserLayout from "@/Layouts/UserLayout.vue";
 
 const props = defineProps({
     recipe: Object,
+    url: String
 });
 
 </script>
 <template>
     <UserLayout>
+
         <Head title="Detail" />
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 my-24">
             <v-card class="mx-auto my-2 px-24">
@@ -20,8 +22,8 @@ const props = defineProps({
                         </v-col>
                     </v-row>
                     <v-row class="align-center">
-                        <v-col cols="12" md="4" v-if="props.recipe.image != null"><img :src="'/storage' + props.recipe.image" alt=""
-                                class="w-80"></v-col>
+                        <v-col cols="12" md="4" v-if="props.recipe.image != null"><img
+                                :src="'/storage' + props.recipe.image" alt="" class="w-80"></v-col>
                         <v-col v-else><img :src="'/storage/images/NoImage.png'" alt="" class="w-80"></v-col>
                         <v-col cols="12" md="6">
                             <ul class="bg-gray-200">
@@ -51,7 +53,8 @@ const props = defineProps({
                                 readonly style=" pointer-events: none;"></v-textarea></v-col>
                     </v-row>
                 </div>
-                <div class="text-lg font-bold bg-gray-400 px-10 mx-2 md:mx-10 mb-4 text-white rounded">¿Cómo hacer? (作り方)</div>
+                <div class="text-lg font-bold bg-gray-400 px-10 mx-2 md:mx-10 mb-4 text-white rounded">¿Cómo hacer? (作り方)
+                </div>
                 <section class="flex">
                     <div class="mb-10 mx-auto py-5 px-5">
                         <v-row>
@@ -75,9 +78,14 @@ const props = defineProps({
                     </div>
                 </section>
             </v-card>
-            <Link as="button" :href="route('user.recipe.search')"
+            <!-- 戻るボタン表示分け -->
+            <Link as="button" :href="route('user.favorite.index')" v-if="props.url == 'favorite'"
                 class="bg-gray-500 text-white px-10 py-2 rounded hover:opacity-75 mr-2 mt-5 mx-2" cols="12">
-              volver
+            volver
             </Link>
-    </div>
-</UserLayout></template>
+            <Link as="button" :href="route('user.recipe.search')" v-else
+                class="bg-gray-500 text-white px-10 py-2 rounded hover:opacity-75 mr-2 mt-5 mx-2" cols="12">
+            volver
+            </Link>
+        </div>
+    </UserLayout></template>

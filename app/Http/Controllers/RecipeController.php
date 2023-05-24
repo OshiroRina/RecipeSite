@@ -44,8 +44,17 @@ class RecipeController extends Controller
         ->where('id',$id)
         ->first();
 
+        //戻るボタン表示分け
+        $pre_url = url()->previous();
+        if(strpos($pre_url,'recipeSearch') == true){
+            $url = 'recipeSearch';
+        }else{
+            $url = 'favorite';
+        }
+
         return Inertia::render('User/RecipeDetail', [
             'recipe' => $recipe,
+            'url' => $url
         ]);
     }
 }
