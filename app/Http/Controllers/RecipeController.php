@@ -46,10 +46,13 @@ class RecipeController extends Controller
 
         //戻るボタン表示分け
         $pre_url = url()->previous();
+        $url='';
         if(strpos($pre_url,'recipeSearch') == true){
             $url = 'recipeSearch';
-        }else{
+        }elseif(strpos($pre_url,'favorite') == true){
             $url = 'favorite';
+        }else{
+            $url ='';
         }
 
         return Inertia::render('User/RecipeDetail', [

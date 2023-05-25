@@ -20,7 +20,7 @@ class RecipeSeeder extends Seeder
                 'name' => 'Oyako Don (おやこどん)',
                 'secondary_category_id' => 1,
                 'information' => 'Oyako-Don normalmente tiene pollp,huevo y cebolla. Va bien con arroz.El nombre proviene del hecho de que el pollo (padre) y los huevos (hijos) se cocinan juntos.',
-                'image' => '/images/recipe1/oyakodon.jpeg',
+                'image' => '/images/recipe1/oyakodon.jpg',
                 'ingredient1' => '1/4 de pollo',
                 'ingredient2' => '2 huevos',
                 'ingredient3' => '1/2 de cebolla',

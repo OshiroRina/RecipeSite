@@ -83,7 +83,11 @@ const props = defineProps({
                 class="bg-gray-500 text-white px-10 py-2 rounded hover:opacity-75 mr-2 mt-5 mx-2" cols="12">
             volver
             </Link>
-            <Link as="button" :href="route('user.recipe.search')" v-else
+            <Link as="button" :href="route('user.recipe.search')" v-else-if="props.url == 'recipeSearch'"
+                class="bg-gray-500 text-white px-10 py-2 rounded hover:opacity-75 mr-2 mt-5 mx-2" cols="12">
+            volver
+            </Link>
+            <Link as="button" :href="route('user.topSite.index')" v-else
                 class="bg-gray-500 text-white px-10 py-2 rounded hover:opacity-75 mr-2 mt-5 mx-2" cols="12">
             volver
             </Link>
