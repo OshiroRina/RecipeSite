@@ -18,7 +18,7 @@ class RecipeSeeder extends Seeder
         DB::table('recipes')->insert([
             [
                 'name' => 'Oyako Don (おやこどん)',
-                'secondary_category_id' => 1,
+                'primary_category_id' => 1,
                 'information' => 'Oyako-Don normalmente tiene pollp,huevo y cebolla. Va bien con arroz.El nombre proviene del hecho de que el pollo (padre) y los huevos (hijos) se cocinan juntos.',
                 'image' => '/images/recipe1/oyakodon.jpg',
                 'ingredient1' => '1/4 de pollo',
@@ -33,7 +33,7 @@ class RecipeSeeder extends Seeder
             ],
             [
                 'name' => 'Chan Chan Yaki (しゃけのちゃんちゃんやき)',
-                'secondary_category_id' => 2,
+                'primary_category_id' => 2,
                 'information' => 'Es un plato tradicional de la prefecture Hokkaido. Tine salmon y varias verduras(normalment repollo,zanahoria,cebolla...etc)',
                 'image' => '/images/recipe2/chanchan.jpg',
                 'ingredient1' => '2 rebanadas de salmón',
@@ -48,7 +48,7 @@ class RecipeSeeder extends Seeder
             ],
             [
                 'name' => 'Nasu Miso Itame (なすみそいため)',
-                'secondary_category_id' => 3,
+                'primary_category_id' => 3,
                 'information' => 'Es un plato que se suele hacer en casa. Normalmente tiene carne,berenjena,y pimiento...etc. Va muy bien con arroz. ',
                 'image' => '/images/recipe3/nasumiso.jpeg',
                 'ingredient1' => '1 berenjena',
@@ -63,7 +63,7 @@ class RecipeSeeder extends Seeder
             ],
             [
                 'name' => 'Onigiri (おにぎり)',
-                'secondary_category_id' => 4,
+                'primary_category_id' => 4,
                 'information' => 'Es la comida muy simple , pero se come mucho en Japon. Dentro de arroz tiene varios ingredientes(ciruela salada,atun con mayonesa...etc)',
                 'image' => '/images/recipe4/onigiri.jpg',
                 'ingredient1' => '200g de arroz',
@@ -78,7 +78,7 @@ class RecipeSeeder extends Seeder
             ],
             [
                 'name' => 'Tamagotoji Udon (たまごとじうどん)',
-                'secondary_category_id' => 5,
+                'primary_category_id' => 5,
                 'information' => 'Udon es un fideo hecho de harina. La sopa tiene huevo y Dashi.',
                 'image' => '/images/recipe5/tamagotozi.jpg',
                 'ingredient1' => '200g de Udon',
@@ -93,7 +93,7 @@ class RecipeSeeder extends Seeder
             ],
             [
                 'name' => 'Pepe Tama (ぺぺタマ)',
-                'secondary_category_id' => 6,
+                'primary_category_id' => 6,
                 'information' => 'Es la pasta original de Japon.Está mezclado la carbonara y peperoncino.',
                 'image' => '/images/recipe6/pepetama.jpg',
                 'ingredient1' => '150g de pasta',
@@ -108,7 +108,7 @@ class RecipeSeeder extends Seeder
             ],
             [
                 'name' => 'Miso Shiru (みそしる)',
-                'secondary_category_id' => 7,
+                'primary_category_id' => 7,
                 'information' => 'Es una sopa de miso. Nolmalment tiene Tohu,algas marinas...etc',
                 'image' => '/images/recipe7/misoshiru.jpg',
                 'ingredient1' => '200ml de agua',
@@ -123,7 +123,7 @@ class RecipeSeeder extends Seeder
             ],
             [
                 'name' => 'Obento (おべんとう)',
-                'secondary_category_id' => 8,
+                'primary_category_id' => 8,
                 'information' => 'Es una caja de almuerzo. En la caja llevan varias comida.',
                 'image' => '/images/recipe8/obento.jpg',
                 'ingredient1' => null,
@@ -138,7 +138,7 @@ class RecipeSeeder extends Seeder
             ],
             [
                 'name' => 'Mochi Daihuku (だいふく)',
-                'secondary_category_id' => 9,
+                'primary_category_id' => 9,
                 'information' => 'Es un dulce tradicional de Japon. Dentro de mochi tiene varias ingredientes(frijoles dulces,frutas...etc)',
                 'image' => '/images/recipe9/daihuku.jpg',
                 'ingredient1' => null,
@@ -153,7 +153,7 @@ class RecipeSeeder extends Seeder
             ],
             // [
             //     'name' => 'Mochi Daihuku',
-            //     'secondary_category_id' => 8,
+            //     'primary_category_id' => 8,
             //     'information' => 'Es un dulce tradicional de Japon. Dentro de mochi tiene varias ingredientes(frijoles dulces,frutas...etc)',
             // ],
         ]);

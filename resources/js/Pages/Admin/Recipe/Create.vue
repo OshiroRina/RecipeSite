@@ -13,7 +13,7 @@ const form = useForm({
     name: '',
     information: '',
     text: '',
-    secondary_category: '',
+    primary_category: '',
     main_image: '',
     detail_title1: '',
     detail_explanation1: '',
@@ -105,7 +105,7 @@ const activeSubmit = async () => {
                                         required></v-textarea></v-col>
                             </v-row>
                             <v-row>
-                                <v-col><v-select label="カテゴリー" v-model="form.secondary_category" :items="props.categories"
+                                <v-col><v-select label="カテゴリー" v-model="form.primary_category" :items="props.categories"
                                         item-title="name" item-value="id"></v-select></v-col>
                             </v-row>
                             <v-row>

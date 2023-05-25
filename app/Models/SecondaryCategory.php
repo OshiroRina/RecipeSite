@@ -21,9 +21,4 @@ class SecondaryCategory extends Model
         return $this->belongsTo(PrimaryCategory::class);
     }
 
-    public function recipes()
-    {
-        return $this->hasMany(Recipe::class);
-    }
-
 }

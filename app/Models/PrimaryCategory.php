@@ -19,4 +19,9 @@ class PrimaryCategory extends Model
     {
         return $this->hasMany(SecondaryCategory::class);
     }
+
+    public function recipes()
+    {
+        return $this->hasMany(Recipe::class);
+    }
 }

@@ -15,12 +15,14 @@ return new class extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('secondary_category_id')
+            $table->foreignId('primary_category_id')
             ->constrained();
             $table->string('name');
             $table->text('information')->nullable();
             $table->text('text')->nullable();
             $table->string('image')->nullable();
+            $table->string('cook_time')->nullable();
+            $table->string('quantity')->nullable();
             $table->string('ingredient1')->nullable();
             $table->string('ingredient2')->nullable();
             $table->string('ingredient3')->nullable();

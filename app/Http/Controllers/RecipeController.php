@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Recipe;
 use App\Models\RecipeDetail;
-use App\Models\SecondaryCategory;
+use App\Models\PrimaryCategory;
 use App\Models\Favorite;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,17 +14,17 @@ class RecipeController extends Controller
 {
     public function index()
     {
-        $secondary_categories = SecondaryCategory::select('id','name')->get();
+        $primary_categories = PrimaryCategory::select('id','name')->get();
 
         return Inertia::render('User/RecipeIndex', [
-            'secondary_categories' => $secondary_categories,
+            'primary_categories' => $primary_categories,
         ]);
 
     }
 
     public function search(Request $request)
     {
-        $categories = Recipe::with('secondary_category','recipe_details','favorites')
+        $categories = Recipe::with('primary_category','recipe_details','favorites')
         ->searchCategory($request->search_category)
         ->searchWord($request->search_word)
         ->get();
@@ -40,7 +40,7 @@ class RecipeController extends Controller
 
     public function show($id)
     {
-        $recipe = Recipe::with('secondary_category','recipe_details')
+        $recipe = Recipe::with('primary_category','recipe_details')
         ->where('id',$id)
         ->first();
 

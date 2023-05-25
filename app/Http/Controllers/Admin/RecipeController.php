@@ -68,7 +68,7 @@ class RecipeController extends Controller
                 'name' => $request->name,
                 'information' => $request->information ? $request->information : null,
                 'text' => $request->text ? $request->text : null,
-                'secondary_category_id' => $request->secondary_category ? $request->secondary_category : null,
+                'primary_category_id' => $request->primary_category ? $request->primary_category : null,
                 'image' => $request->file('main_image') ? '/images'. '/' .  $image_dir . '/' . $request->file('main_image')[0]->getClientOriginalName() : null,
                 'ingredient1'=> $request->ingredient1,
                 'ingredient2'=> $request->ingredient2,
@@ -140,7 +140,7 @@ class RecipeController extends Controller
      */
     public function edit($id)
     {
-        $recipe = Recipe::with('secondary_category','recipe_details')
+        $recipe = Recipe::with('primary_category','recipe_details')
                  ->where('id',$id)
                  ->first();
 
@@ -162,7 +162,7 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $recipe = Recipe::with('secondary_category','recipe_details')
+        $recipe = Recipe::with('primary_category','recipe_details')
                  ->where('id',$id)
                  ->first();
 
@@ -180,7 +180,7 @@ class RecipeController extends Controller
             //レシピテーブル更新(画像以外)
             $recipe->name = $request->name ? $request->name : null;
             $recipe->information = $request->information ? $request->information : null;
-            $recipe->secondary_category_id = is_Array($request->secondary_category) ? $request->secondary_category['id'] : $request->secondary_category;
+            $recipe->primary_category_id = is_Array($request->primary_category) ? $request->primary_category['id'] : $request->primary_category;
             $recipe->ingredient1= $request->ingredient1;
             $recipe->ingredient2 = $request->ingredient2;
             $recipe->ingredient3 = $request->ingredient3;

@@ -75,6 +75,23 @@ const searchRecipes = async () => {
                                 <FontAwesomeIcon icon="angle-right" />
                             </label>
                         </v-col>
+                        <v-col class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
+                            <input type="radio" :id="3" name="categories" :value="3" v-model="form.search_category"
+                                @change.prevent="searchRecipes" class="hidden peer" />
+                            <label :for="3"
+                                class="flex text-base py-2 text-center align-center font-bold px-3 w-full hover:bg-primary-light cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                    class="w-5"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                    <path
+                                        d="M428.3 3c11.6-6.4 26.2-2.3 32.6 9.3l4.8 8.7c19.3 34.7 19.8 75.7 3.4 110C495.8 159.6 512 197.9 512 240c0 18.5-3.1 36.3-8.9 52.8c-6.1 17.3-28.5 16.3-36.8-.1l-11.7-23.4c-4.1-8.1-12.4-13.3-21.5-13.3H360c-13.3 0-24-10.7-24-24V152c0-13.3-10.7-24-24-24l-17.1 0c-21.3 0-30-23.9-10.8-32.9C304.7 85.4 327.7 80 352 80c28.3 0 54.8 7.3 77.8 20.2c5.5-18.2 3.7-38.4-6-55.8L419 35.7c-6.4-11.6-2.3-26.2 9.3-32.6zM171.2 345.5L264 160l40 0v80c0 26.5 21.5 48 48 48h76.2l23.9 47.8C372.3 443.9 244.3 512 103.2 512H44.4C19.9 512 0 492.1 0 467.6c0-20.8 14.5-38.8 34.8-43.3l49.8-11.1c37.6-8.4 69.5-33.2 86.7-67.7z" />
+                                </svg>
+                                <span class="px-3">Verdura (野菜)</span>
+                                <FontAwesomeIcon icon="angle-right" />
+                            </label>
+                        </v-col>
+
+                    </v-row>
+                    <v-row class="mx-5 md:pb-2">
                         <v-col cols="12" md="3"
                             class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
                             <input type="radio" :id="4" name="categories" :value="4" v-model="form.search_category"
@@ -90,8 +107,6 @@ const searchRecipes = async () => {
                                 <FontAwesomeIcon icon="angle-right" />
                             </label>
                         </v-col>
-                    </v-row>
-                    <v-row class="mx-5 md:pb-2">
                         <v-col cols="12" md="3"
                             class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
                             <input type="radio" :id="5" name="categories" :value="5" v-model="form.search_category"
@@ -131,6 +146,8 @@ const searchRecipes = async () => {
                                 <FontAwesomeIcon icon="angle-right" />
                             </label>
                         </v-col>
+                    </v-row>
+                    <v-row class="mx-5">
                         <v-col cols="12" md="3"
                             class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
                             <input type="radio" :id="8" name="categories" :value="8" v-model="form.search_category"
@@ -145,8 +162,6 @@ const searchRecipes = async () => {
                                 <FontAwesomeIcon icon="angle-right" />
                             </label>
                         </v-col>
-                    </v-row>
-                    <v-row class="mx-5">
                         <v-col cols="12" md="3"
                             class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
                             <input type="radio" :id="9" name="categories" :value="9" v-model="form.search_category"
@@ -177,8 +192,9 @@ const searchRecipes = async () => {
                     ¡Que disfrute!
                 </div>
                 <div class="mt-5 md:w-1/3 mx-10">
-                <img :src="'/storage/images/explainFoto.jpg'" class="w-full md:w-80">
+                    <img :src="'/storage/images/explainFoto.jpg'" class="w-full md:w-80">
+                </div>
             </div>
         </div>
-    </div>
-</UserLayout></template>
+    </UserLayout>
+</template>

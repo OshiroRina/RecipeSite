@@ -17,10 +17,34 @@ class PrimaryCategorySeeder extends Seeder
     {
         DB::table('primary_categories')->insert([
             [
-            'name' => 'Aperitivos y tapas',
+                'name' => 'Carne',
             ],
             [
-            'name' => 'Platos fuertes'
+                'name' => 'Pescados',
+            ],
+            [
+                'name' => 'Verdura',
+            ],
+            [
+                'name' => 'Arroces',
+            ],
+            [
+                'name' => 'Fideos',
+            ],
+            [
+                'name' => 'Pasta',
+            ],
+            [
+                'name' => 'Sopa',
+            ],
+            [
+                'name' => 'Obento',
+            ],
+            [
+                'name' => 'Dulces',
+            ],
+            [
+                'name' => 'Ensalada',
             ]
         ]);
     }

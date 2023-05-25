@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('explanation')->nullable();
             $table->string('image1')->nullable();
-            $table->string('image2')->nullable();
+            // $table->string('image2')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

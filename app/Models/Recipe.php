@@ -17,7 +17,7 @@ class Recipe extends Model
         'name',
         'information',
         'text',
-        'secondary_category_id',
+        'primary_category_id',
         'image',
         'ingredient1',
         'ingredient2',
@@ -32,9 +32,9 @@ class Recipe extends Model
         'created_at'
     ];
 
-    public function secondary_category()
+    public function primary_category()
     {
-        return $this->belongsTo(SecondaryCategory::class);
+        return $this->belongsTo(PrimaryCategory::class);
     }
 
     public function recipe_details()
@@ -51,7 +51,7 @@ class Recipe extends Model
     public function scopeSearchCategory($query, $search_category = null)
     {
          if(!empty($search_category)){
-            return $query->where('secondary_category_id','=', $search_category);
+            return $query->where('primary_category_id','=', $search_category);
          }
      }
 

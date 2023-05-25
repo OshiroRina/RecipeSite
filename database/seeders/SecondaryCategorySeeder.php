@@ -17,45 +17,101 @@ class SecondaryCategorySeeder extends Seeder
     {
         DB::table('secondary_categories')->insert([
             [
-                'name' => 'Carne',
+                'name' => 'Pollo',
                 'primary_category_id' => 1,
             ],
             [
-                'name' => 'Pescados',
+                'name' => 'Cerdo',
                 'primary_category_id' => 1,
             ],
             [
-                'name' => 'Verdura',
+                'name' => 'Vaca',
                 'primary_category_id' => 1,
             ],
             [
-                'name' => 'Arroces',
+                'name' => 'Salmón',
                 'primary_category_id' => 2,
             ],
             [
-                'name' => 'Fideos',
+                'name' => 'Gamba',
                 'primary_category_id' => 2,
             ],
             [
-                'name' => 'Pasta',
-                'primary_category_id' => 2,
+                'name' => 'Tomate',
+                'primary_category_id' => 3,
             ],
             [
-                'name' => 'Sopa',
-                'primary_category_id' => 2,
+                'name' => 'Verengena',
+                'primary_category_id' => 3,
             ],
             [
-                'name' => 'Obento',
-                'primary_category_id' => 2,
+                'name' => 'Repollo',
+                'primary_category_id' => 3,
             ],
             [
-                'name' => 'Dulces',
-                'primary_category_id' => 2,
+                'name' => 'Zanahoria',
+                'primary_category_id' => 3,
             ],
             [
-                'name' => 'Ensalada',
-                'primary_category_id' => 2,
-            ]
+                'name' => 'Rechuga',
+                'primary_category_id' => 3,
+            ],
+            [
+                'name' => 'Rechuga',
+                'primary_category_id' => 3,
+            ],
+            [
+                'name' => 'Onigiri',
+                'primary_category_id' => 4,
+            ],
+            [
+                'name' => 'Don',
+                'primary_category_id' => 4,
+            ],
+            [
+                'name' => 'Udon',
+                'primary_category_id' => 5,
+            ],
+            [
+                'name' => 'Somen',
+                'primary_category_id' => 5,
+            ],
+            [
+                'name' => 'Yakisoba',
+                'primary_category_id' => 5,
+            ],
+            [
+                'name' => 'Salsa de tomate',
+                'primary_category_id' => 6,
+            ],
+            [
+                'name' => 'Salsa japonesa',
+                'primary_category_id' => 6,
+            ],
+            [
+                'name' => 'Sopa de miso',
+                'primary_category_id' => 7,
+            ],
+            [
+                'name' => 'Sopa al estilo chino',
+                'primary_category_id' => 7,
+            ],
+            [
+                'name' => 'Mochi',
+                'primary_category_id' => 8,
+            ],
+            [
+                'name' => 'Dulce Frio',
+                'primary_category_id' => 9,
+            ],
+            [
+                'name' => 'Ensalada japonesa',
+                'primary_category_id' => 10,
+            ],
+            [
+                'name' => 'Ensalada al estilo chino',
+                'primary_category_id' => 10,
+            ],
         ]);
     }
 }

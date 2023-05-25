@@ -18,7 +18,7 @@ const props = defineProps({
                     <v-row>
                         <v-col>
                             <h2 class="font-bold border-bottom border-gray-200 text-xl">{{ props.recipe.name }}</h2>
-                            <p class="text-sm text-gray-500">{{ props.recipe.secondary_category.name }}</p>
+                            <p class="text-sm text-gray-500">{{ props.recipe.primary_category.name }}</p>
                         </v-col>
                     </v-row>
                     <v-row class="align-center">

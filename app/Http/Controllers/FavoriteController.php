@@ -16,7 +16,7 @@ class FavoriteController extends Controller
     {
         $user_id = Auth::id();
 
-        $favorites = Recipe::with('secondary_category','recipe_details','favorites')
+        $favorites = Recipe::with('primary_category','recipe_details','favorites')
         ->whereHas('favorites', function ($query) use ($user_id) {
             $query->where('user_id', $user_id);
         })

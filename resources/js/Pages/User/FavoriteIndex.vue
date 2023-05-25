@@ -40,7 +40,7 @@ const props = defineProps({
                                             {{ recipe.name }}
                                             </Link>
                                         </h3>
-                                        <p class="mt-1 text-sm text-gray-500">{{ recipe.secondary_category.name }}</p>
+                                        <p class="mt-1 text-sm text-gray-500">{{ recipe.primary_category.name }}</p>
                                     </div>
                                     <p class="text-sm font-medium">
                                         <Favorite :recipe="recipe" :user_id="user_id" />

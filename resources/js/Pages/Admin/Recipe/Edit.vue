@@ -13,7 +13,7 @@ console.log(props.recipe)
 const form = useForm({
     name: props.recipe.name,
     information: props.recipe.information,
-    secondary_category: props.recipe.secondary_category_id,
+    primary_category: props.recipe.primary_category_id,
     details :props.recipe.recipe_details,
     main_image: '',
     image1: [],
@@ -81,7 +81,7 @@ const activeSubmit = async () => {
                                     required></v-textarea></v-col>
                         </v-row>
                         <v-row>
-                            <v-col><v-select label="カテゴリー" v-model="form.secondary_category" :items="props.categories"
+                            <v-col><v-select label="カテゴリー" v-model="form.primary_category" :items="props.categories"
                                     item-title="name" item-value="id"></v-select></v-col>
                         </v-row>
                         <v-row>
