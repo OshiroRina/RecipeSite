@@ -20,16 +20,23 @@ const form = useForm({
     search_word:store.state.searchRecipes.search_word,
 });
 
+
 const searchRecipes = async () => {
     store.commit("setLoading", true);
     await store.commit("setSearchRecipes", form);
     router.get("/recipeSearch", form);
-    await wait(0.5);
     store.commit("setLoading", false);
-    checkbox.value=true;
 };
 
 </script>
+<style>
+#input-10{
+    padding: 0;
+}
+#input-13{
+    padding: 0;
+}
+</style>
 <template>
     <UserLayout>
         <Head title="Search" />
@@ -47,12 +54,12 @@ const searchRecipes = async () => {
                 <v-row no-gutters>
                     <v-col cols="12" md="5" class="mr-5">
                         <v-select label="Primera Categoria" v-model="form.primary_category" :items="props.primary_categories"
-                                        item-title="name" item-value="id" density="compact" return-object>
+                                        item-title="name" item-value="id" density="compact" return-object clearable>
                         </v-select>
                     </v-col>
                     <v-col cols="12" md="5">
                         <v-select label="Segunda Categoria" v-model="form.secondary_category" :items="form.primary_category.secondary_categories"
-                                        item-title="name" item-value="id" density="compact" return-object></v-select>
+                                        item-title="name" item-value="id" density="compact" return-object clearable v-if="form.primary_category != null"></v-select>
                     </v-col>
                 </v-row>
                 <v-row no-gutters>
