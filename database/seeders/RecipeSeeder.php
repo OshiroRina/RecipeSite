@@ -19,6 +19,7 @@ class RecipeSeeder extends Seeder
             [
                 'name' => 'Oyako Don (おやこどん)',
                 'primary_category_id' => 1,
+                'secondary_category_id' => 1,
                 'information' => 'Oyako-Don normalmente tiene pollp,huevo y cebolla. Va bien con arroz.El nombre proviene del hecho de que el pollo (padre) y los huevos (hijos) se cocinan juntos.',
                 'image' => '/images/recipe1/oyakodon.jpg',
                 'ingredient1' => '1/4 de pollo',
@@ -34,6 +35,7 @@ class RecipeSeeder extends Seeder
             [
                 'name' => 'Chan Chan Yaki (しゃけのちゃんちゃんやき)',
                 'primary_category_id' => 2,
+                'secondary_category_id' => 4,
                 'information' => 'Es un plato tradicional de la prefecture Hokkaido. Tine salmon y varias verduras(normalment repollo,zanahoria,cebolla...etc)',
                 'image' => '/images/recipe2/chanchan.jpg',
                 'ingredient1' => '2 rebanadas de salmón',
@@ -49,6 +51,7 @@ class RecipeSeeder extends Seeder
             [
                 'name' => 'Nasu Miso Itame (なすみそいため)',
                 'primary_category_id' => 3,
+                'secondary_category_id' => 7,
                 'information' => 'Es un plato que se suele hacer en casa. Normalmente tiene carne,berenjena,y pimiento...etc. Va muy bien con arroz. ',
                 'image' => '/images/recipe3/nasumiso.jpeg',
                 'ingredient1' => '1 berenjena',
@@ -64,6 +67,7 @@ class RecipeSeeder extends Seeder
             [
                 'name' => 'Onigiri (おにぎり)',
                 'primary_category_id' => 4,
+                'secondary_category_id' => 12,
                 'information' => 'Es la comida muy simple , pero se come mucho en Japon. Dentro de arroz tiene varios ingredientes(ciruela salada,atun con mayonesa...etc)',
                 'image' => '/images/recipe4/onigiri.jpg',
                 'ingredient1' => '200g de arroz',
@@ -79,6 +83,7 @@ class RecipeSeeder extends Seeder
             [
                 'name' => 'Tamagotoji Udon (たまごとじうどん)',
                 'primary_category_id' => 5,
+                'secondary_category_id' => 14,
                 'information' => 'Udon es un fideo hecho de harina. La sopa tiene huevo y Dashi.',
                 'image' => '/images/recipe5/tamagotozi.jpg',
                 'ingredient1' => '200g de Udon',
@@ -94,6 +99,7 @@ class RecipeSeeder extends Seeder
             [
                 'name' => 'Pepe Tama (ぺぺタマ)',
                 'primary_category_id' => 6,
+                'secondary_category_id' => 18,
                 'information' => 'Es la pasta original de Japon.Está mezclado la carbonara y peperoncino.',
                 'image' => '/images/recipe6/pepetama.jpg',
                 'ingredient1' => '150g de pasta',
@@ -109,6 +115,7 @@ class RecipeSeeder extends Seeder
             [
                 'name' => 'Miso Shiru (みそしる)',
                 'primary_category_id' => 7,
+                'secondary_category_id' => 19,
                 'information' => 'Es una sopa de miso. Nolmalment tiene Tohu,algas marinas...etc',
                 'image' => '/images/recipe7/misoshiru.jpg',
                 'ingredient1' => '200ml de agua',
@@ -124,6 +131,7 @@ class RecipeSeeder extends Seeder
             [
                 'name' => 'Obento (おべんとう)',
                 'primary_category_id' => 8,
+                'secondary_category_id' => null,
                 'information' => 'Es una caja de almuerzo. En la caja llevan varias comida.',
                 'image' => '/images/recipe8/obento.jpg',
                 'ingredient1' => null,
@@ -139,6 +147,7 @@ class RecipeSeeder extends Seeder
             [
                 'name' => 'Mochi Daihuku (だいふく)',
                 'primary_category_id' => 9,
+                'secondary_category_id' => 21,
                 'information' => 'Es un dulce tradicional de Japon. Dentro de mochi tiene varias ingredientes(frijoles dulces,frutas...etc)',
                 'image' => '/images/recipe9/daihuku.jpg',
                 'ingredient1' => null,

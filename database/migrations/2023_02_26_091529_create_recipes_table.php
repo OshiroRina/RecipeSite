@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('primary_category_id')
             ->constrained();
+            $table->foreignId('secondary_category_id')
+            ->nullable()
+            ->constrained();
             $table->string('name');
             $table->text('information')->nullable();
             $table->text('text')->nullable();

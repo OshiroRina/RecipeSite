@@ -7,44 +7,44 @@ const props = defineProps({
     // recipe: Object,
     categories: Array
 });
-// console.log(props.recipe.recipe_details)
 
 const form = useForm({
     name: '',
     information: '',
     text: '',
-    primary_category: '',
-    main_image: '',
+    primary_category: props.categories[0],
+    secondary_category: '',
+    main_image: [],
     detail_title1: '',
     detail_explanation1: '',
-    detail_image1: '',
+    detail_image1: [],
     detail_title2: '',
     detail_explanation2: '',
-    detail_image2: '',
+    detail_image2: [],
     detail_title3: '',
     detail_explanation3: '',
-    detail_image3: '',
+    detail_image3: [],
     detail_title4: '',
     detail_explanation4: '',
-    detail_image4: '',
+    detail_image4: [],
     detail_title5: '',
     detail_explanation5: '',
-    detail_image5: '',
+    detail_image5: [],
     detail_title6: '',
     detail_explanation6: '',
-    detail_image6: '',
+    detail_image6: [],
     detail_title7: '',
     detail_explanation7: '',
-    detail_image7: '',
+    detail_image7: [],
     detail_title8: '',
     detail_explanation8: '',
-    detail_image8: '',
+    detail_image8: [],
     detail_title9: '',
     detail_explanation9: '',
-    detail_image9: '',
+    detail_image9: [],
     detail_title10: '',
     detail_explanation10: '',
-    detail_image10: '',
+    detail_image10: [],
     ingredient1:'',
     ingredient2:'',
     ingredient3:'',
@@ -105,8 +105,10 @@ const activeSubmit = async () => {
                                         required></v-textarea></v-col>
                             </v-row>
                             <v-row>
-                                <v-col><v-select label="カテゴリー" v-model="form.primary_category" :items="props.categories"
-                                        item-title="name" item-value="id"></v-select></v-col>
+                                <v-col><v-select label="第1カテゴリー" v-model="form.primary_category" :items="props.categories"
+                                        item-title="name" item-value="id" return-object clearable></v-select></v-col>
+                                <v-col><v-select label="第2カテゴリー" v-model="form.secondary_category" :items="form.primary_category.secondary_categories"
+                                        item-title="name" item-value="id" return-object clearable></v-select></v-col>
                             </v-row>
                             <v-row>
                                 <v-col><v-file-input label="完成画像" v-model="form.main_image"></v-file-input></v-col>

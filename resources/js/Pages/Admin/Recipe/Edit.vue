@@ -6,16 +6,17 @@ import { reactive, ref } from "vue";
 const props = defineProps({
     recipe: Object,
     categories: Array,
-    image_names: Array,
+    secondary_categories: Array,
+    // image_name: String
 });
-console.log(props.recipe)
 
 const form = useForm({
     name: props.recipe.name,
     information: props.recipe.information,
-    primary_category: props.recipe.primary_category_id,
+    primary_category: props.recipe.primary_category,
+    secondary_category: props.recipe.secondary_category,
     details :props.recipe.recipe_details,
-    main_image: '',
+    main_image: [],
     image1: [],
     _method: 'put',
     ingredient1: props.recipe.ingredient1,
@@ -28,8 +29,6 @@ const form = useForm({
     ingredient8:props.recipe.ingredient8,
     ingredient9:props.recipe.ingredient9,
 });
-
-console.log(form.image1)
 
 const rules = {
     name: [
@@ -53,7 +52,6 @@ const activeSubmit = async () => {
         const validResult = await Form.value.validate();
         if (validResult.valid) {
             state.success = true;
-            console.log(form);
             form.post(route("admin.recipe.update", { id: props.recipe.id }))
 
         } else {
@@ -61,7 +59,6 @@ const activeSubmit = async () => {
         }
 };
 </script>
-
 <template>
     <AdminAuthenticatedLayout>
 
@@ -82,10 +79,13 @@ const activeSubmit = async () => {
                         </v-row>
                         <v-row>
                             <v-col><v-select label="カテゴリー" v-model="form.primary_category" :items="props.categories"
-                                    item-title="name" item-value="id"></v-select></v-col>
+                                    item-title="name" item-value="id" return-object clearable></v-select></v-col>
+                                    <!-- {{ form.primary_category.secondary_categories }} -->
+                            <v-col><v-select label="カテゴリー" v-model="form.secondary_category" :items="form.primary_category.secondary_categories"
+                                    item-title="name" item-value="id" return-object clearable class="centered-input"></v-select></v-col>
                         </v-row>
                         <v-row>
-                            <v-col><v-file-input label="完成画像" v-model="form.main_image"></v-file-input></v-col>
+                            <v-col><v-file-input type="file" label="完成画像" v-model="form.main_image"></v-file-input></v-col>
                             <v-col v-if="form.main_image != null"><img :src="'/storage' + props.recipe.image" alt="" class="w-60"></v-col>
                         </v-row>
                     </div>
@@ -117,9 +117,8 @@ const activeSubmit = async () => {
                             </v-row>
                         </div>
                     <div class="text-lg font-bold bg-gray-400 px-10 mx-10 text-white" v-if="props.recipe.recipe_details[0] != null">工程編集</div>
-                    <section class="d-flex">
-                        <div class="m-10 border p-3" v-for="detail,index in form.details" :key="detail.id">
-                            <div cols="4">
+                    <v-row class="mx-auto">
+                        <v-col cols="12" md="5" class="m-10 border p-3" v-for="detail,index in form.details" :key="detail.id">
                                 <v-row>
                                     <v-col><v-text-field v-model="detail.title" label="工程タイトル" :rules="rules.title" outlined
                                             class="compact-form " hide-details="auto" required></v-text-field></v-col>
@@ -134,9 +133,8 @@ const activeSubmit = async () => {
                                 <v-row>
                                     <v-col v-if="detail.image1 != null"><img :src="'/storage' + detail.image1" alt="" class="w-40 h-28"></v-col>
                                 </v-row>
-                            </div>
-                        </div>
-                    </section>
+                        </v-col>
+                    </v-row>
                 </v-card>
                 <div class="flex items-center justify-center">
                     <Link

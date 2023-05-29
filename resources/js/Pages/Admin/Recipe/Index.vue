@@ -46,11 +46,11 @@ const deleteRecipe = (id) => {
                             </td>
                             <td class="w-1/2 info">{{ recipe.information }}</td>
                             <td class="w-1/4 text-right">
-                                <Link @click="deleteRecipe(recipe.id)"
+                                <button @click="deleteRecipe(recipe.id)"
                                 as="button"
                                 class="bg-red-500 text-white px-5 py-2 rounded hover:opacity-75 mr-2">
                                 削除
-                                </Link>
+                                </button>
                             </td>
                         </tr>
                     </tbody>

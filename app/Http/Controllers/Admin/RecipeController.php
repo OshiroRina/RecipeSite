@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Recipe;
 use App\Models\RecipeDetail;
+use App\Models\PrimaryCategory;
 use App\Models\SecondaryCategory;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +20,9 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::select('id','name','information')->get();
+        $recipes = Recipe::select('id','name','information')
+        ->orderBy('id','desc')
+        ->get();
 
         return Inertia::render('Admin/Recipe/Index', [
             'recipes' => $recipes,
@@ -33,7 +36,8 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        $categories = SecondaryCategory::select('id','name')
+        $categories = PrimaryCategory::with('secondary_categories:primary_category_id,id,name')
+                    ->select('id','name')
                     ->get();
 
         return Inertia::render('Admin/Recipe/Create', [
@@ -68,7 +72,8 @@ class RecipeController extends Controller
                 'name' => $request->name,
                 'information' => $request->information ? $request->information : null,
                 'text' => $request->text ? $request->text : null,
-                'primary_category_id' => $request->primary_category ? $request->primary_category : null,
+                'primary_category_id' => $request->primary_category ? $request->primary_category['id'] : null,
+                'secondary_category_id' => $request->secondary_category ? $request->secondary_category['id'] : null,
                 'image' => $request->file('main_image') ? '/images'. '/' .  $image_dir . '/' . $request->file('main_image')[0]->getClientOriginalName() : null,
                 'ingredient1'=> $request->ingredient1,
                 'ingredient2'=> $request->ingredient2,
@@ -140,16 +145,26 @@ class RecipeController extends Controller
      */
     public function edit($id)
     {
-        $recipe = Recipe::with('primary_category','recipe_details')
+        $recipe = Recipe::with('primary_category:id,name','recipe_details','secondary_category:id,name')
                  ->where('id',$id)
                  ->first();
 
-        $categories = SecondaryCategory::select('id','name')
-                    ->get();
+        $categories = PrimaryCategory::with('secondary_categories:primary_category_id,id,name')
+                 ->select('id','name')
+                 ->get();
+
+        // 編集するレシピの第一カテゴリーに紐づく第二カテゴリーの選択肢
+        $secondary_categories = SecondaryCategory::where('primary_category_id',$recipe->primary_category_id)
+                                ->select('id','name')
+                                ->get();
+
+        $image_name = basename($recipe->image);
 
         return Inertia::render('Admin/Recipe/Edit', [
             'recipe' => $recipe,
             'categories' => $categories,
+            'secondary_categories' => $secondary_categories,
+            'image_name' => $image_name
         ]);
     }
 
@@ -180,7 +195,8 @@ class RecipeController extends Controller
             //レシピテーブル更新(画像以外)
             $recipe->name = $request->name ? $request->name : null;
             $recipe->information = $request->information ? $request->information : null;
-            $recipe->primary_category_id = is_Array($request->primary_category) ? $request->primary_category['id'] : $request->primary_category;
+            $recipe->primary_category_id = is_Array($request->primary_category) ? $request->primary_category['id'] : null;
+            $recipe->secondary_category_id = is_Array($request->secondary_category) ? $request->secondary_category['id'] : null;
             $recipe->ingredient1= $request->ingredient1;
             $recipe->ingredient2 = $request->ingredient2;
             $recipe->ingredient3 = $request->ingredient3;

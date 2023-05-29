@@ -8,6 +8,7 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import FlashMessage from '@/Components/FlashMessage.vue';
 import { Link } from '@inertiajs/vue3';
 
+const showingNavigationDropdown = ref(false);
 </script>
 
 <template>

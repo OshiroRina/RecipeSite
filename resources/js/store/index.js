@@ -4,7 +4,9 @@ export default createStore({
     state: {
         loading: false,
         searchRecipes: {
-            search_category: "",
+            primary_category: "",
+            secondary_category: "",
+            search_word:"",
         },
     },
     mutations: {

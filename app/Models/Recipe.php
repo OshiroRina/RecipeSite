@@ -18,6 +18,7 @@ class Recipe extends Model
         'information',
         'text',
         'primary_category_id',
+        'secondary_category_id',
         'image',
         'ingredient1',
         'ingredient2',
@@ -35,6 +36,11 @@ class Recipe extends Model
     public function primary_category()
     {
         return $this->belongsTo(PrimaryCategory::class);
+    }
+
+    public function secondary_category()
+    {
+        return $this->belongsTo(SecondaryCategory::class);
     }
 
     public function recipe_details()
@@ -61,5 +67,18 @@ class Recipe extends Model
          if(!empty($search_word)){
             return $query->where('recipes.name', 'like', '%'. $search_word . '%');
          }
+     }
+
+     // カテゴリー詳細検索
+     public function scopeSearchCategoryAnd($query,$primary_category=null,$secondary_category=null)
+     {
+        if(!empty($primary_category) && !empty($secondary_category)){
+            return $query->where('primary_category_id','=', $primary_category['id'])
+                         ->where('secondary_category_id','=', $secondary_category['id']);
+        } else if(!empty($primary_category) && empty($secondary_category)){
+            return $query->where('primary_category_id','=', $primary_category['id']);
+        }else{
+            return $query;
+        }
      }
 }

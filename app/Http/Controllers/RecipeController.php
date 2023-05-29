@@ -27,13 +27,21 @@ class RecipeController extends Controller
         $categories = Recipe::with('primary_category','recipe_details','favorites')
         ->searchCategory($request->search_category)
         ->searchWord($request->search_word)
+        ->SearchCategoryAnd($request->primary_category,$request->secondary_category)
+        ->orderBy('created_at','desc')
         ->get();
+
+        $primary_categories = PrimaryCategory::with('secondary_categories:primary_category_id,id,name')
+        ->select('id','name')
+        ->get();
+        // dd($primary_categories);
 
         $user_id = Auth::id();
 
         return Inertia::render('User/RecipeSearch', [
             'categories' => $categories,
-            'user_id' => $user_id
+            'user_id' => $user_id,
+            'primary_categories' => $primary_categories
         ]);
 
     }

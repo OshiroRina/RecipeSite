@@ -98,7 +98,7 @@ class SecondaryCategorySeeder extends Seeder
             ],
             [
                 'name' => 'Mochi',
-                'primary_category_id' => 8,
+                'primary_category_id' => 9,
             ],
             [
                 'name' => 'Dulce Frio',

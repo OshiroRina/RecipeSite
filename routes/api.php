@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Recipe;
 use App\Models\Favorite;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,10 +21,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::middleware('auth:sanctum')->get('/searchRecipes', function (Request $request) {
-//     return  Recipe::with('secondary_category','recipe_details')
-//         ->searchCategory($request->search_category);
-// });
+Route::middleware('auth:sanctum')->get('/searchRecipes', function (Request $request) {
+    return  Recipe::with('primary_category','recipe_details','favorites')
+    ->searchCategory($request->search_category)
+    ->searchWord($request->search_word)
+    ->SearchCategoryAnd($request->primary_category,$request->secondary_category)
+    ->orderBy('created_at','desc');
+});
 
 Route::post('/favorite', function (Request $request) {
 
