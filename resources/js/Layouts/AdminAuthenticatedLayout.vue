@@ -14,7 +14,7 @@ const showingNavigationDropdown = ref(false);
 <template>
     <div>
         <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
+            <nav class="border-gray-100 bg-gray-400">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -28,12 +28,12 @@ const showingNavigationDropdown = ref(false);
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('admin.recipe.index')" :active="route().current('admin.dashboard')">
-                                    TOP
+                                <NavLink :href="route('admin.recipe.index')" :active="route().current('admin.dashboard')" class="text-white hover:opacity-80">
+                                    Recetas (レシピ)
                                 </NavLink>
-                                <!-- <NavLink :href="route('tests.index')" :active="route().current('tests.index')">
-                                    Test
-                                </NavLink> -->
+                                <NavLink :href="route('admin.contact.index')" :active="route().current('admin.dashboard')" class="text-white hover:opacity-80">
+                                    Contactos (お問い合わせ)
+                                </NavLink>
                             </div>
                         </div>
 

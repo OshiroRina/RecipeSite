@@ -15,6 +15,7 @@ class Contact extends Model
         'email',
         'context',
         'replay_flag',
+        'replay_text',
         'created_at'
     ];
 }

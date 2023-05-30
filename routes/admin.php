@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\RecipeController;
+use App\Http\Controllers\Admin\ContactController;
 
 
 /*
@@ -83,3 +84,12 @@ Route::middleware('auth:admin')->group(function () {
 });
 
 Route::resource('recipe', RecipeController::class)->middleware('auth:admin');
+
+Route::middleware('auth:admin')->group(function () {
+    Route::get('/contact', [ContactController::class, 'index'])
+                ->name('contact.index');
+    Route::get('/contact/edit/{id}', [ContactController::class, 'edit'])
+                ->name('contact.edit');
+    Route::put('/contact/update/{id}', [ContactController::class, 'update'])
+                ->name('contact.update');
+});

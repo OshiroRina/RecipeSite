@@ -78,10 +78,10 @@ const activeSubmit = async () => {
                                     required></v-textarea></v-col>
                         </v-row>
                         <v-row>
-                            <v-col><v-select label="カテゴリー" v-model="form.primary_category" :items="props.categories"
+                            <v-col><v-select label="第1カテゴリー" v-model="form.primary_category" :items="props.categories"
                                     item-title="name" item-value="id" return-object clearable></v-select></v-col>
                                     <!-- {{ form.primary_category.secondary_categories }} -->
-                            <v-col><v-select label="カテゴリー" v-model="form.secondary_category" :items="form.primary_category.secondary_categories"
+                            <v-col><v-select label="第2カテゴリー" v-model="form.secondary_category" :items="form.primary_category.secondary_categories"
                                     item-title="name" item-value="id" return-object clearable class="centered-input"></v-select></v-col>
                         </v-row>
                         <v-row>

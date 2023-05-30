@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('subject')->nullable();
             $table->text('context');
             $table->boolean('replay_flag');
+            $table->text('replay_text')->nullable();
             $table->timestamps();
         });
     }

@@ -21,7 +21,7 @@ const deleteRecipe = (id) => {
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="d-flex justify-end mb-5">
                     <Link :href="route('admin.recipe.create')"
-                        class="bg-orange-400 text-white px-8 py-2 rounded hover:opacity-75 mr-2" cols="12">
+                        class="bg-orange-300 text-white px-8 py-2 rounded hover:opacity-75 mr-2" cols="12">
                     新規登録
                     </Link>
                 </div>
@@ -48,7 +48,7 @@ const deleteRecipe = (id) => {
                             <td class="w-1/4 text-right">
                                 <button @click="deleteRecipe(recipe.id)"
                                 as="button"
-                                class="bg-red-500 text-white px-5 py-2 rounded hover:opacity-75 mr-2">
+                                class="bg-red-400 text-white px-5 py-2 rounded hover:opacity-75 mr-2">
                                 削除
                                 </button>
                             </td>
