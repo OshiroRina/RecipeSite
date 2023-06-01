@@ -75,7 +75,7 @@ const form = useForm({
     text: '',
     primary_category: props.categories[0],
     secondary_category: '',
-    main_image: [],
+    main_image: '',
     ingredients: ingredientForms,
     details: detailForms
 });

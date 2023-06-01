@@ -47,7 +47,6 @@ const addDetailForm = () => {
     form_body = {
         title: "",
         explanation: "",
-        image1: [],
     };
     detailForms.value.push(form_body);
 };
@@ -74,12 +73,12 @@ const rules = {
     name: [
         (v) => !!v || "レシピ名は必ず入力してください",
     ],
-    title: [
-        (v) => !!v || "工程タイトルは必ず入力してください",
-    ],
-    explanation: [
-        (v) => !!v || "説明は必ず入力してください",
-    ],
+    // title: [
+    //     (v) => !!v || "工程タイトルは必ず入力してください",
+    // ],
+    // explanation: [
+    //     (v) => !!v || "説明は必ず入力してください",
+    // ],
 
 };
 
@@ -148,8 +147,7 @@ const activeSubmit = async () => {
                                 </v-col>
                             </v-row>
                         </div>
-                        <div class="text-lg font-bold bg-gray-400 px-10 mx-10 text-white"
-                            v-if="props.recipe.recipe_details[0] != null">工程編集</div>
+                        <div class="text-lg font-bold bg-gray-400 px-10 mx-10 text-white">工程編集</div>
                         <!-- 工程の動的追加,削除フォーム -->
                         <v-btn color="grey" class="text-white mx-10 mt-10" @click.prevent="addDetailForm()"
                             v-if="detailForms.length < 10">
@@ -201,4 +199,5 @@ const activeSubmit = async () => {
                 </v-form>
             </v-container>
         </div>
-</AdminAuthenticatedLayout></template>
+    </AdminAuthenticatedLayout>
+</template>
