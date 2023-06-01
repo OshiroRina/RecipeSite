@@ -20,9 +20,9 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::select('id','name','information')
-        ->orderBy('id','desc')
-        ->get();
+        $recipes = Recipe::select('id', 'name', 'information')
+            ->orderBy('id', 'desc')
+            ->get();
 
         return Inertia::render('Admin/Recipe/Index', [
             'recipes' => $recipes,
@@ -37,11 +37,10 @@ class RecipeController extends Controller
     public function create()
     {
         $categories = PrimaryCategory::with('secondary_categories:primary_category_id,id,name')
-                    ->select('id','name')
-                    ->get();
+            ->select('id', 'name')
+            ->get();
 
         return Inertia::render('Admin/Recipe/Create', [
-            // 'recipe' => $recipe,
             'categories' => $categories,
         ]);
     }
@@ -57,14 +56,14 @@ class RecipeController extends Controller
         $last_recipe = Recipe::latest('id')->first();
 
         // 画像保存ディレクトリ名
-        $image_dir = 'recipe'. $last_recipe->id + 1;
+        $image_dir = 'recipe' . $last_recipe->id + 1;
 
-        if(isset($request->main_image)){
+        if (isset($request->main_image)) {
             $file_name = $request->file('main_image')[0]->getClientOriginalName();
             $request->file('main_image')[0]->storeAs('public/images/' . $image_dir, $file_name);
         };
 
-        try{
+        try {
             DB::beginTransaction();
 
             //レシピテーブル登録
@@ -74,38 +73,34 @@ class RecipeController extends Controller
                 'text' => $request->text ? $request->text : null,
                 'primary_category_id' => $request->primary_category ? $request->primary_category['id'] : null,
                 'secondary_category_id' => $request->secondary_category ? $request->secondary_category['id'] : null,
-                'image' => $request->file('main_image') ? '/images'. '/' .  $image_dir . '/' . $request->file('main_image')[0]->getClientOriginalName() : null,
-                'ingredient1'=> $request->ingredient1,
-                'ingredient2'=> $request->ingredient2,
-                'ingredient3'=> $request->ingredient3,
-                'ingredient4'=> $request->ingredient4,
-                'ingredient5'=> $request->ingredient5,
-                'ingredient6'=> $request->ingredient6,
-                'ingredient7'=> $request->ingredient7,
-                'ingredient8'=> $request->ingredient8,
-                'ingredient9'=> $request->ingredient9,
+                'image' => $request->file('main_image') ? '/images' . '/' .  $image_dir . '/' . $request->file('main_image')[0]->getClientOriginalName() : null,
+                'ingredient1' => !empty($request->ingredients[0]) ? $request->ingredients[0]['ingredient'] : null,
+                'ingredient2' => !empty($request->ingredients[1]) ? $request->ingredients[1]['ingredient'] : null,
+                'ingredient3' => !empty($request->ingredients[2]) ? $request->ingredients[2]['ingredient'] : null,
+                'ingredient4' => !empty($request->ingredients[3]) ? $request->ingredients[3]['ingredient'] : null,
+                'ingredient5' => !empty($request->ingredients[4]) ? $request->ingredients[4]['ingredient'] : null,
+                'ingredient6' => !empty($request->ingredients[5]) ? $request->ingredients[5]['ingredient'] : null,
+                'ingredient7' => !empty($request->ingredients[6]) ? $request->ingredients[6]['ingredient'] : null,
+                'ingredient8' => !empty($request->ingredients[7]) ? $request->ingredients[7]['ingredient'] : null,
+                'ingredient9' => !empty($request->ingredients[8]) ? $request->ingredients[8]['ingredient'] : null,
             ]);
 
             //レシピ詳細テーブル登録
-            for($i=1; 10 >= $i; $i++){
-                $title = 'detail_title' . $i;
-                $explanation = 'detail_explanation' . $i;
-                $image = 'detail_image' . $i;
+            for ($i = 0; count($request->details) > $i; $i++) {
+                if (!empty($request->details[$i]['detail_title'])) {
 
-                if(!empty($request->$title)){
-
-                    if($request->file($image) != null){
-                        $file_name = $request->file($image)[0]->getClientOriginalName();
-                        $request->file($image)[0]->storeAs('public/images/' . $image_dir, $file_name);
+                    if ($request->details[$i]['detail_image'][0] != null) {
+                        $file_name = $request->details[$i]['detail_image'][0]->getClientOriginalName();
+                        $request->details[$i]['detail_image'][0]->storeAs('public/images/' . $image_dir, $file_name);
                     }
 
                     RecipeDetail::create([
                         'recipe_id' => $recipe->id,
-                        'title' => $request->$title,
-                        'explanation' => $request->$explanation,
-                        'image1' => $request->file($image) ? '/images'. '/' .  $image_dir . '/' . $request->file($image)[0]->getClientOriginalName() : null,
+                        'title' => $request->details[$i]['detail_title'],
+                        'explanation' => $request->details[$i]['detail_explanation'],
+                        'image1' => $request->details[$i]['detail_image'][0] ? '/images' . '/' .  $image_dir . '/' . $request->details[$i]['detail_image'][0]->getClientOriginalName() : null,
                     ]);
-                }else{
+                } else {
                     break;
                 }
             }
@@ -116,25 +111,13 @@ class RecipeController extends Controller
                 'message' => 'レシピを登録しました',
                 'status' => 'success',
             ]);
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             DB::rollback();
             return to_route('admin.recipe.create')->with([
                 'message' => 'レシピの登録に失敗しました',
                 'status' => 'danger',
             ]);
-    }
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        }
     }
 
     /**
@@ -145,26 +128,23 @@ class RecipeController extends Controller
      */
     public function edit($id)
     {
-        $recipe = Recipe::with('primary_category:id,name','recipe_details','secondary_category:id,name')
-                 ->where('id',$id)
-                 ->first();
+        $recipe = Recipe::with('primary_category:id,name', 'recipe_details', 'secondary_category:id,name')
+            ->where('id', $id)
+            ->first();
 
         $categories = PrimaryCategory::with('secondary_categories:primary_category_id,id,name')
-                 ->select('id','name')
-                 ->get();
+            ->select('id', 'name')
+            ->get();
 
         // 編集するレシピの第一カテゴリーに紐づく第二カテゴリーの選択肢
-        $secondary_categories = SecondaryCategory::where('primary_category_id',$recipe->primary_category_id)
-                                ->select('id','name')
-                                ->get();
-
-        $image_name = basename($recipe->image);
+        $secondary_categories = SecondaryCategory::where('primary_category_id', $recipe->primary_category_id)
+            ->select('id', 'name')
+            ->get();
 
         return Inertia::render('Admin/Recipe/Edit', [
             'recipe' => $recipe,
             'categories' => $categories,
             'secondary_categories' => $secondary_categories,
-            'image_name' => $image_name
         ]);
     }
 
@@ -177,57 +157,71 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $recipe = Recipe::with('primary_category','recipe_details')
-                 ->where('id',$id)
-                 ->first();
+        $recipe = Recipe::with('primary_category', 'recipe_details')
+            ->where('id', $id)
+            ->first();
 
-        try{
+        try {
             DB::beginTransaction();
 
-            //画像データありでファイル名が異なる場合は保存
-            if($request->file('main_image') != null && $request->main_image != $recipe->main_image){
-                $file_name = $request->file('main_image')[0]->getClientOriginalName();
-                $request->file('main_image')[0]->storeAs('public/images/' . 'recipe'.$id, $file_name);
-                $recipe->image = $request->file('main_image') ? '/images'. '/' . 'recipe'.$id . '/' . $request->file('main_image')[0]->getClientOriginalName() : null;
-                $recipe->save();
-            };
-
-            //レシピテーブル更新(画像以外)
-            $recipe->name = $request->name ? $request->name : null;
-            $recipe->information = $request->information ? $request->information : null;
-            $recipe->primary_category_id = is_Array($request->primary_category) ? $request->primary_category['id'] : null;
-            $recipe->secondary_category_id = is_Array($request->secondary_category) ? $request->secondary_category['id'] : null;
-            $recipe->ingredient1= $request->ingredient1;
-            $recipe->ingredient2 = $request->ingredient2;
-            $recipe->ingredient3 = $request->ingredient3;
-            $recipe->ingredient4 = $request->ingredient4;
-            $recipe->ingredient5 = $request->ingredient5;
-            $recipe->ingredient6 = $request->ingredient6;
-            $recipe->ingredient7 = $request->ingredient7;
-            $recipe->ingredient8 = $request->ingredient8;
-            $recipe->ingredient9 = $request->ingredient9;
+        //画像データありでファイル名が異なる場合は保存
+        if ($request->file('main_image') != null && $request->main_image != $recipe->main_image) {
+            $file_name = $request->file('main_image')[0]->getClientOriginalName();
+            $request->file('main_image')[0]->storeAs('public/images/' . 'recipe' . $id, $file_name);
+            $recipe->image = $request->file('main_image') ? '/images' . '/' . 'recipe' . $id . '/' . $request->file('main_image')[0]->getClientOriginalName() : null;
             $recipe->save();
+        };
 
-            //レシピ詳細テーブル更新
-            for($i=0; count($request->details) > $i; $i++){
+        //レシピテーブル更新(画像以外)
+        $recipe->name = $request->name ? $request->name : null;
+        $recipe->information = $request->information ? $request->information : null;
+        $recipe->primary_category_id = is_Array($request->primary_category) ? $request->primary_category['id'] : null;
+        $recipe->secondary_category_id = is_Array($request->secondary_category) ? $request->secondary_category['id'] : null;
+        $recipe->ingredient1 = !empty($request->ingredients[0]) ? $request->ingredients[0]['ingredient'] : null;
+        $recipe->ingredient2 = !empty($request->ingredients[1]) ? $request->ingredients[1]['ingredient'] : null;
+        $recipe->ingredient3 = !empty($request->ingredients[2]) ? $request->ingredients[2]['ingredient'] : null;
+        $recipe->ingredient4 = !empty($request->ingredients[3]) ? $request->ingredients[3]['ingredient'] : null;
+        $recipe->ingredient5 = !empty($request->ingredients[4]) ? $request->ingredients[4]['ingredient'] : null;
+        $recipe->ingredient6 = !empty($request->ingredients[5]) ? $request->ingredients[5]['ingredient'] : null;
+        $recipe->ingredient7 = !empty($request->ingredients[6]) ? $request->ingredients[6]['ingredient'] : null;
+        $recipe->ingredient8 = !empty($request->ingredients[7]) ? $request->ingredients[7]['ingredient'] : null;
+        $recipe->ingredient9 = !empty($request->ingredients[8]) ? $request->ingredients[8]['ingredient'] : null;
+        $recipe->save();
+
+        //レシピ詳細テーブル更新
+        for ($i = 0; count($request->details) > $i; $i++) {
+
+            //レシピ詳細がない場合(新規登録)
+            if (empty($recipe->recipe_details[$i])) {
+                RecipeDetail::create([
+                    'recipe_id' => $recipe->id,
+                    'title' => $request->recipe_details[$i]['title'],
+                    'explanation' => $request->recipe_details[$i]['explanation'],
+                    'image1' => $request->image1[$i][0] ? '/images' . '/' . 'recipe' . $id . '/' . $request->image1[$i][0]->getClientOriginalName() : null,
+                ]);
+            } else {  //レシピ詳細がすでにある場合(更新)
 
                 //画像データありでファイル名が異なる場合は保存
-                if(isset($request->file('image1')[$i])){
-                    $store_file_name = $recipe->recipe_details[$i]->image1;
-                    $update_file_name = '/images' . '/' . 'recipe'.$id . '/' . $request->file('image1')[$i][0]->getClientOriginalName();
+                if (isset($request->image1[$i])) {
 
-                    if($update_file_name != $store_file_name){
-                        $file_name = $request->file('image1')[$i][0]->getClientOriginalName();
-                        $request->file('image1')[$i][0]->storeAs('public/images/' . 'recipe'.$id, $file_name);
-                        $recipe->recipe_details[$i]->image1 = $request->file('image1')[$i] ? $update_file_name : null;
+                    //DB保存済みのファイル名
+                    $store_file_name = $recipe->recipe_details[$i]->image1;
+                    //新しいファイル名
+                    $update_file_name = '/images' . '/' . 'recipe' . $id . '/' . $request->image1[$i][0]->getClientOriginalName();
+
+                    if ($update_file_name != $store_file_name) {
+                        $file_name = $request->image1[$i][0]->getClientOriginalName();
+                        $request->image1[$i][0]->storeAs('public/images/' . 'recipe' . $id, $file_name);
+                        $recipe->recipe_details[$i]->image1 = $request->image1[$i] ? $update_file_name : null;
                         $recipe->recipe_details[$i]->save();
                     }
                 }
 
-                $recipe->recipe_details[$i]->title = $request->details[$i]['title'];
-                $recipe->recipe_details[$i]->explanation = $request->details[$i]['explanation'];
+                $recipe->recipe_details[$i]->title = $request->recipe_details[$i]['title'];
+                $recipe->recipe_details[$i]->explanation = $request->recipe_details[$i]['explanation'];
                 $recipe->recipe_details[$i]->save();
             }
+        }
 
             DB::commit();
 
@@ -235,14 +229,12 @@ class RecipeController extends Controller
                 'message' => 'レシピを更新しました',
                 'status' => 'success',
             ]);
-
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             DB::rollback();
-            return to_route('admin.recipe.edit', ['recipe'=> $recipe->id])->with([
+            return to_route('admin.recipe.edit', ['recipe' => $recipe->id])->with([
                 'message' => 'レシピの更新に失敗しました',
                 'status' => 'danger',
             ]);
-
         }
     }
 

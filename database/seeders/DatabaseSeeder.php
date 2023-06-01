@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             RecipeSeeder::class,
             RecipeDetailSeeder::class,
             UserSeeder::class,
+            ContactSeeder::class,
         ]);
     }
 }

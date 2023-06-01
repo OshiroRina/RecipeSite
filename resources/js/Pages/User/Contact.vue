@@ -27,7 +27,7 @@ const rules = {
         (v) => /.+@.+/.test(v) || "Por favor ingrese en formato de correo electronico (メールアドレス形式で入力してください。)",
     ],
     context: [
-        (v) => !!v || "Se requiere su mensaje",
+        (v) => !!v || "Se requiere su mensaje  (メッセージは必須です。)",
     ]
 };
 

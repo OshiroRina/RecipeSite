@@ -12,14 +12,12 @@ class ContactController extends Controller
 {
     public function index()
     {
-        return Inertia::render('User/Contact', [
-        ]);
-
+        return Inertia::render('User/Contact', []);
     }
 
     public function store(ContactRequest $request)
     {
-        try{
+        try {
             DB::beginTransaction();
 
             //お問い合わせテーブル登録
@@ -37,14 +35,12 @@ class ContactController extends Controller
                 'message' => 'Ha enviado su mensaje. Muchas gracias. (メッセージを送信しました。)',
                 'status' => 'success',
             ]);
-
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             DB::rollback();
             return to_route('user.contact.index')->with([
                 'message' => 'No ha podido enviar el mensaje.(メッセージを送信できませんでした。)',
                 'status' => 'danger',
             ]);
         }
-
     }
 }

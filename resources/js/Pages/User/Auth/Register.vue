@@ -9,6 +9,7 @@ import { Head, Link, useForm } from '@inertiajs/vue3';
 const form = useForm({
     name: '',
     email: '',
+    country:'',
     password: '',
     password_confirmation: '',
     terms: false,
@@ -27,25 +28,31 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="name" value="Nombre" />
+                <InputLabel for="name" value="Nombre (お名前)" />
                 <TextInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
                 <InputError class="mt-2" :message="form.errors.name" />
             </div>
 
             <div class="mt-4">
-                <InputLabel for="email" value="Correo electronico" />
+                <InputLabel for="email" value="Correo electronico (メールアドレス)" />
                 <TextInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autocomplete="username" />
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Contraseña" />
+                <InputLabel for="country" value="Pais (居住国)" />
+                <TextInput id="country" type="text" class="mt-1 block w-full" v-model="form.country" required autofocus autocomplete="country" />
+                <InputError class="mt-2" :message="form.errors.country" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="password" value="Contraseña (パスワード)" />
                 <TextInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password_confirmation" value="Confirmar contraseña" />
+                <InputLabel for="password_confirmation" value="Confirmar contraseña (パスワード再確認)" />
                 <TextInput id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>

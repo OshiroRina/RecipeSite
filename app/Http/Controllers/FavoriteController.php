@@ -16,17 +16,15 @@ class FavoriteController extends Controller
     {
         $user_id = Auth::id();
 
-        $favorites = Recipe::with('primary_category','recipe_details','favorites')
-        ->whereHas('favorites', function ($query) use ($user_id) {
-            $query->where('user_id', $user_id);
-        })
-        ->get();
-
-        // dd($favorites);
+        $favorites = Recipe::with('primary_category', 'recipe_details', 'favorites')
+            ->whereHas('favorites', function ($query) use ($user_id) {
+                $query->where('user_id', $user_id);
+            })
+            ->get();
 
         return Inertia::render('User/FavoriteIndex', [
             'favorites' => $favorites,
-            'user_id'=> $user_id
+            'user_id' => $user_id
         ]);
     }
 }

@@ -27,7 +27,7 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="ログイン" />
+        <Head title="Login" />
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
@@ -36,13 +36,13 @@ const submit = () => {
         <form @submit.prevent="submit">
             <div class="pb-3">Usuario Login</div>
             <div>
-                <InputLabel for="email" value="correo electronico" />
+                <InputLabel for="email" value="correo electronico (メールアドレス)" />
                 <TextInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="contraseña" />
+                <InputLabel for="password" value="contraseña (パスワード)" />
                 <TextInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>

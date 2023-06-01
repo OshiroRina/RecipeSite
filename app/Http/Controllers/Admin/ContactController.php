@@ -18,8 +18,8 @@ class ContactController extends Controller
     public function index()
     {
         $contacts = Contact::select()
-        ->orderBy('id','desc')
-        ->get();
+            ->orderBy('id', 'desc')
+            ->get();
 
         return Inertia::render('Admin/Contact/Index', [
             'contacts' => $contacts,
@@ -35,8 +35,8 @@ class ContactController extends Controller
     public function edit($id)
     {
         $contact = Contact::select()
-        ->where('id',$id)
-        ->first();
+            ->where('id', $id)
+            ->first();
 
         return Inertia::render('Admin/Contact/Edit', [
             'contact' => $contact,
@@ -53,12 +53,12 @@ class ContactController extends Controller
     public function update(Request $request, $id)
     {
         $contact = Contact::select()
-        ->where('id',$id)
-        ->first();
+            ->where('id', $id)
+            ->first();
 
         // dd($request);
 
-        try{
+        try {
             DB::beginTransaction();
 
             $contact->replay_flag = $request->replay_flag;
@@ -71,10 +71,9 @@ class ContactController extends Controller
                 'message' => 'お問い合わせ返信情報を更新しました',
                 'status' => 'success',
             ]);
-
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             DB::rollback();
-            return to_route('admin.contact.edit', ['id'=> $contact->id])->with([
+            return to_route('admin.contact.edit', ['id' => $contact->id])->with([
                 'message' => 'お問い合わせ返信情報の更新に失敗しました',
                 'status' => 'danger',
             ]);
