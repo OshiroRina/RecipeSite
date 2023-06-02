@@ -8,12 +8,15 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
-
+import Loading from "@/Components/Loading.vue";
 </script>
 
 <template>
     <div>
         <v-app>
+            <div v-show="$store.state.loading">
+                <Loading />
+            </div>
             <Header />
             <div class="min-h-screen bg-gray-200">
                 <!-- Page Content -->

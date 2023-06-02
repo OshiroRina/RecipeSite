@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { Link, router } from '@inertiajs/vue3';
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
+import { useStore } from "vuex";
 
 const drawer = ref(false);
 
@@ -31,8 +32,21 @@ const title = ref(true);
 const favorite = ref(true);
 
 const search = ref("");
-const searchRecipes = () => {
+
+const store = useStore();
+
+// 検索時ローディングの実装
+const wait = (sec) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, sec * 1000);
+  });
+};
+
+const searchRecipes = async () => {
+  store.commit("setLoading", true);
   router.get("/recipeSearch", { search_word: search.value });
+  await wait(0.5);
+  store.commit("setLoading", false);
 };
 </script>
 <template>
@@ -125,6 +139,7 @@ const searchRecipes = () => {
     </Link>
     <Link v-else :href="route('user.logout')" method="post" as="button"
       class="flex md:hidden lg:hidden mx-5 text-gray-600 hover:opacity-75">
-  <div style="font-size:15px; font-weight: bold;">Log Out</div>
-  </Link>
-</v-navigation-drawer></template>
+    <div style="font-size:15px; font-weight: bold;">Log Out</div>
+    </Link>
+  </v-navigation-drawer>
+</template>

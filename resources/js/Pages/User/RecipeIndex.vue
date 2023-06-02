@@ -14,7 +14,7 @@ const form = useForm({
     search_category: '',
 });
 
-const searchRecipes = async () => {
+const searchRecipes = () => {
     router.get("/recipeSearch", form);
 };
 </script>

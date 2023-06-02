@@ -14,17 +14,25 @@ const props = defineProps({
 const checkbox =ref(false);
 
 const store = useStore();
+
 const form = useForm({
     primary_category: store.state.searchRecipes.primary_category,
     secondary_category: store.state.searchRecipes.secondary_category,
     search_word:store.state.searchRecipes.search_word,
 });
 
+// 検索時ローディングの実装
+const wait = (sec) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(resolve, sec * 1000);
+    });
+};
 
 const searchRecipes = async () => {
     store.commit("setLoading", true);
     await store.commit("setSearchRecipes", form);
     router.get("/recipeSearch", form);
+    await wait(0.5);
     store.commit("setLoading", false);
 };
 
