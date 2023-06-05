@@ -10,7 +10,7 @@ const props = defineProps({
 });
 
 // 材料のフォーム
-const ingredientForms = ref([
+const ingredientForms = reactive([
     { ingredient: props.recipe.ingredient1 },
     { ingredient: props.recipe.ingredient2 },
     { ingredient: props.recipe.ingredient3 },
@@ -28,16 +28,16 @@ const addIngredientForm = () => {
     form_body = {
         ingredient: "",
     };
-    ingredientForms.value.push(form_body);
+    ingredientForms.push(form_body);
 };
 
 //削除ボタンをクリック時
 const deleteIngredientForm = (index) => {
-    ingredientForms.value.splice(index, 1);
+    ingredientForms.splice(index, 1);
 };
 
 // 工程のフォーム(初期で4つ用意)
-const detailForms = ref(
+const detailForms = reactive(
     props.recipe.recipe_details
 );
 
@@ -48,12 +48,12 @@ const addDetailForm = () => {
         title: "",
         explanation: "",
     };
-    detailForms.value.push(form_body);
+    detailForms.push(form_body);
 };
 
 //材料フォーム削除ボタンをクリックした時
 const deleteDetailForm = (index) => {
-    detailForms.value.splice(index, 1);
+    detailForms.splice(index, 1);
 };
 
 const form = useForm({
