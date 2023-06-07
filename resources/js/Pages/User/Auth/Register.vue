@@ -6,6 +6,12 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
+const props = defineProps({
+    countries: Array
+});
+
+console.log(props.countries)
+
 const form = useForm({
     name: '',
     email: '',
@@ -16,6 +22,7 @@ const form = useForm({
 });
 
 const submit = () => {
+    console.log(form)
     form.post(route('user.register'), {
         onFinish: () => form.reset('password', 'password_confirmation'),
     });
@@ -41,7 +48,9 @@ const submit = () => {
 
             <div class="mt-4">
                 <InputLabel for="country" value="Pais (居住国)" />
-                <TextInput id="country" type="text" class="mt-1 block w-full" v-model="form.country" required autofocus autocomplete="country" />
+                <select name="country" id="country" v-model="form.country" class="rounded border-gray-300 w-full bg-white">
+                    <option v-for="country in props.countries" :key="country" :value="country">{{ country }}</option>
+                </select>
                 <InputError class="mt-2" :message="form.errors.country" />
             </div>
 

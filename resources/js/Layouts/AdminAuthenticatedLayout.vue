@@ -32,6 +32,9 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('admin.contact.index')" :active="route().current('admin.dashboard')" class="text-white hover:opacity-80">
                                     Contactos (お問い合わせ)
                                 </NavLink>
+                                <NavLink :href="route('admin.analysis.index')" :active="route().current('admin.dashboard')" class="text-white hover:opacity-80">
+                                    Análisis (分析)
+                                </NavLink>
                             </div>
                         </div>
 

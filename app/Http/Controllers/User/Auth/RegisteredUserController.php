@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Config;
 
 class RegisteredUserController extends Controller
 {
@@ -21,7 +22,11 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return Inertia::render('User/Auth/Register');
+        $countries = Config::get('country');
+
+        return Inertia::render('User/Auth/Register',[
+            'countries' => $countries['country']
+        ]);
     }
 
     /**

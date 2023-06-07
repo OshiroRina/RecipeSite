@@ -6,7 +6,7 @@ import { reactive, ref } from "vue";
 const props = defineProps({
     categories: Array
 });
-
+console.log(props.categories)
 // 材料のフォーム(初期で3つ用意)
 const ingredientForms = reactive([
     { ingredient: '' },
