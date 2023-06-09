@@ -14,3 +14,4 @@ export async function createFavorite(recipe_id:number) {
 
 		return res.data;
 }
+

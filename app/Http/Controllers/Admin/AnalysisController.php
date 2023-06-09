@@ -20,9 +20,26 @@ class AnalysisController extends Controller
             ->groupBy('country')
             ->pluck('count');
 
+        // $startDate="2023-05-01";
+        // $endDate = "2023-06-31";
+
+        // $periodQuery = User::createdDate($startDate,$endDate)
+        // ->groupBy('created_at')
+        // ->selectRaw('created_at , count(users.created_at) as count,DATE_FORMAT(created_at,"%Y%m") as date');
+
+        // $data = DB::table($periodQuery)
+        // ->groupBy('date')
+        // ->selectRaw('date , sum(count) as total')
+        // ->get();
+
+        // $labels = $data->pluck('date');
+        // $counts = $data->pluck('total');
+
+        // dd($labels,$counts);
+
         return Inertia::render('Admin/Analysis/Index', [
             'countries' => $countries,
-            'user_count' => $user_count
+            'user_count' => $user_count,
         ]);
     }
 }

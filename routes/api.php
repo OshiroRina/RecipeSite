@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Recipe;
 use App\Models\Favorite;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Api\AnalysisController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,11 +23,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->get('/searchRecipes', function (Request $request) {
-    return  Recipe::with('primary_category','recipe_details','favorites')
-    ->searchCategory($request->search_category)
-    ->searchWord($request->search_word)
-    ->SearchCategoryAnd($request->primary_category,$request->secondary_category)
-    ->orderBy('created_at','desc');
+    return  Recipe::with('primary_category', 'recipe_details', 'favorites')
+        ->searchCategory($request->search_category)
+        ->searchWord($request->search_word)
+        ->SearchCategoryAnd($request->primary_category, $request->secondary_category)
+        ->orderBy('created_at', 'desc');
 });
 
 Route::post('/favorite', function (Request $request) {
@@ -56,8 +57,8 @@ Route::post('/favorite/create', function (Request $request) {
     $user_id = Auth::id();
 
     $favorite = Favorite::where('user_id', Auth::id())
-            ->where('recipe_id', $request->recipe_id)
-            ->first();
+        ->where('recipe_id', $request->recipe_id)
+        ->first();
 
     // すでにお気に入り登録している場合は削除する
     if (!empty($favorite)) {
@@ -73,3 +74,7 @@ Route::post('/favorite/create', function (Request $request) {
     }
     return $favorite_status;
 });
+
+//管理画面、グラフ表示用
+Route::post('/analysis', [AnalysisController::class, 'index'])
+    ->name('api.analysis');

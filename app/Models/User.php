@@ -43,4 +43,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //作成日期間検索
+    public function scopeCreatedDate($query, $startDate = null, $endDate = null)
+    {
+        if (!empty($startDate) && !empty($endDate)) {
+            return $query->where('created_at', ">=", $startDate)
+                ->where('created_at', '<=', $endDate);
+        } elseif (!empty($startDate) && empty($endDate)) {
+            return $query->where('created_at', ">=", $startDate);
+        } elseif (empty($startDate) && !empty($endDate)) {
+            return $query->where('created_at', '<=', $endDate);
+        } else {
+            return $query;
+        }
+    }
 }
