@@ -1,15 +1,16 @@
 <script setup>
-import axios from "axios";
 import { analysisRepository } from "@/repositories";
 import AdminAuthenticatedLayout from "@/Layouts/AdminAuthenticatedLayout.vue";
 import { ref, reactive, onMounted, computed } from "vue";
 import { DoughnutChart, BarChart } from "vue-chart-3";
 import { Chart, registerables } from "chart.js";
 import { getToday } from "@/common";
+import dayjs from 'dayjs';
 
 const props = defineProps({
     countries: Array,
     user_count: Array,
+    users: Array
 });
 
 Chart.register(...registerables);
@@ -73,8 +74,8 @@ const chartData = reactive({
             barPercentage: 0.5, //バーの幅
             data: counts,   //数量データ
             backgroundColor: [
-                "#ffff7f",
-                "#ffbf7f",
+                "#A5C8ED",
+                "#7fffbf",
                 "#bfff7f",
                 "#7fffbf",
                 "#A5C8ED",
@@ -114,6 +115,27 @@ const chartData = reactive({
                         <BarChart :chartData="chartData" />
                     </div>
                 </v-card>
+                <div class="pt-10 pb-15 my-5">
+                    <div class="text-xl mb-5 text-gray-500 font-bold">ユーザー登録者</div>
+                    <v-table>
+                        <thead>
+                            <tr>
+                                <th>名前</th>
+                                <th>メールアドレス</th>
+                                <th>居住国</th>
+                                <th>作成日</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="user in users" :key="user.id">
+                                <td>{{ user.name }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.country }}</td>
+                                <td>{{ dayjs(user.created_at).format('YYYY-MM-DD') }}</td>
+                            </tr>
+                        </tbody>
+                    </v-table>
+                </div>
             </div>
         </div>
     </AdminAuthenticatedLayout>

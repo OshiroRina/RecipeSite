@@ -18,18 +18,18 @@ class AnalysisController extends Controller
      */
     public function index(Request $request)
     {
-        // $startDate="2023-05-01";
-        // $endDate = "";
-
+        // ユーザー登録月のデータ取得
         $periodQuery = User::createdDate($request->startDate, $request->endDate)
             ->groupBy('created_at')
             ->selectRaw('created_at , count(users.created_at) as count,DATE_FORMAT(created_at,"%Y%m") as date');
 
+        // 月ごとに合計し、グループ化
         $data = DB::table($periodQuery)
             ->groupBy('date')
             ->selectRaw('date , sum(count) as total')
             ->get();
-        
+
+        // グラフ作成用にデータをそれぞれ抽出
         $labels = $data->pluck('date');
         $counts = $data->pluck('total');
 
