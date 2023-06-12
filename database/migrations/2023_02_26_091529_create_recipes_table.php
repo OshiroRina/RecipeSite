@@ -25,7 +25,7 @@ return new class extends Migration
             $table->text('text')->nullable();
             $table->string('image')->nullable();
             $table->string('cook_time')->nullable();
-            $table->string('quantity')->nullable();
+            // $table->string('quantity')->nullable();
             $table->string('ingredient1')->nullable();
             $table->string('ingredient2')->nullable();
             $table->string('ingredient3')->nullable();

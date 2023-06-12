@@ -20,6 +20,7 @@ class Recipe extends Model
         'primary_category_id',
         'secondary_category_id',
         'image',
+        'cook_time',
         'ingredient1',
         'ingredient2',
         'ingredient3',

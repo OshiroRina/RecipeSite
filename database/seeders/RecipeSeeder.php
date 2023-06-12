@@ -20,7 +20,7 @@ class RecipeSeeder extends Seeder
                 'name' => 'Oyako Don (おやこどん)',
                 'primary_category_id' => 1,
                 'secondary_category_id' => 1,
-                'information' => 'Oyako-Don normalmente tiene pollp,huevo y cebolla. Va bien con arroz.El nombre proviene del hecho de que el pollo (padre) y los huevos (hijos) se cocinan juntos.',
+                'information' => 'El oyakodon es un plato popular en Japón y se encuentra en muchos restaurantes de comida japonesa.Consiste en un tazón de arroz cubierto con pollo y huevo batido cocinados juntos en un caldo a base de dashi (un caldo de pescado japonés) y salsa de soja.El nombre "oyakodon" significa literalmente "madre e hijo en un tazón", haciendo referencia al pollo (madre) y al huevo (hijo) que se cocinan juntos.',
                 'image' => '/images/recipe1/oyakodon.jpg',
                 'ingredient1' => '1/4 de pollo',
                 'ingredient2' => '2 huevos',
@@ -31,12 +31,13 @@ class RecipeSeeder extends Seeder
                 'ingredient7' => '100ml de agua',
                 'ingredient8' => null,
                 'ingredient9' => null,
+                'cook_time' => '30 minutos'
             ],
             [
                 'name' => 'Chan Chan Yaki (しゃけのちゃんちゃんやき)',
                 'primary_category_id' => 2,
                 'secondary_category_id' => 4,
-                'information' => 'Es un plato tradicional de la prefecture Hokkaido. Tine salmon y varias verduras(normalment repollo,zanahoria,cebolla...etc)',
+                'information' => 'Es un plato tradicional de la prefecture Hokkaido. Tiene salmon y varias verduras(normalment repollo,zanahoria,cebolla...etc)',
                 'image' => '/images/recipe2/chanchan.jpg',
                 'ingredient1' => '2 rebanadas de salmón',
                 'ingredient2' => '1/4 de repollo',
@@ -47,6 +48,7 @@ class RecipeSeeder extends Seeder
                 'ingredient7' => '50ml de sake',
                 'ingredient8' => null,
                 'ingredient9' => null,
+                'cook_time' => '40 minutos'
             ],
             [
                 'name' => 'Nasu Miso Itame (なすみそいため)',
@@ -63,12 +65,13 @@ class RecipeSeeder extends Seeder
                 'ingredient7' => '50ml de sake',
                 'ingredient8' => null,
                 'ingredient9' => null,
+                'cook_time' => '20 minutos'
             ],
             [
                 'name' => 'Onigiri (おにぎり)',
                 'primary_category_id' => 4,
                 'secondary_category_id' => 12,
-                'information' => 'Es la comida muy simple , pero se come mucho en Japon. Dentro de arroz tiene varios ingredientes(ciruela salada,atun con mayonesa...etc)',
+                'information' => 'El onigiri es una opción popular y conveniente para llevar como comida portátil, ya que no necesita cubiertos y se puede comer fácilmente con las manos. Es común encontrarlos en las tiendas de conveniencia y supermercados en Japón, y también se preparan en casa. Además, existen muchos sabores y variedades de onigiri(ciruela salada,atun con mayonesa...etc),lo que lo convierte en una opción versátil para satisfacer diferentes gustos.',
                 'image' => '/images/recipe4/onigiri.jpg',
                 'ingredient1' => '200g de arroz',
                 'ingredient2' => '1g de sal',
@@ -79,6 +82,7 @@ class RecipeSeeder extends Seeder
                 'ingredient7' => null,
                 'ingredient8' => null,
                 'ingredient9' => null,
+                'cook_time' => '20 minutos'
             ],
             [
                 'name' => 'Tamagotoji Udon (たまごとじうどん)',
@@ -95,6 +99,7 @@ class RecipeSeeder extends Seeder
                 'ingredient7' => '50ml de sake',
                 'ingredient8' => '1 cucharada de almidón de patata',
                 'ingredient9' => null,
+                'cook_time' => '30 minutos'
             ],
             [
                 'name' => 'Pepe Tama (ぺぺタマ)',
@@ -111,12 +116,13 @@ class RecipeSeeder extends Seeder
                 'ingredient7' => '50ml de sake',
                 'ingredient8' => 'un poco de pimiento picante',
                 'ingredient9' => '50g de bacon',
+                'cook_time' => '30 minutos'
             ],
             [
                 'name' => 'Miso Shiru (みそしる)',
                 'primary_category_id' => 7,
                 'secondary_category_id' => 19,
-                'information' => 'Es una sopa de miso. Nolmalment tiene Tohu,algas marinas...etc',
+                'information' => 'La sopa de miso es un plato clásico de la cocina japonesa que se prepara a base de pasta de miso, un condimento fermentado hecho principalmente de soja.La sopa de miso se sirve generalmente en tazones individuales y se acompaña de arroz y otros platos japoneses. Es común en el desayuno, almuerzo o cena en Japón, y se considera una parte esencial de la comida diaria.Nolmalment tiene Tohu,algas marinas...etc',
                 'image' => '/images/recipe7/misoshiru.jpg',
                 'ingredient1' => '200ml de agua',
                 'ingredient2' => '100g de toju',
@@ -127,12 +133,16 @@ class RecipeSeeder extends Seeder
                 'ingredient7' => null,
                 'ingredient8' => null,
                 'ingredient9' => null,
+                'cook_time' => '30 minutos'
             ],
             [
                 'name' => 'Obento (おべんとう)',
                 'primary_category_id' => 8,
                 'secondary_category_id' => null,
-                'information' => 'Es una caja de almuerzo. En la caja llevan varias comida.',
+                'information' => 'Se refiere a una comida preparada en una caja o contenedor, generalmente para ser llevada y consumida fuera de casa.
+                También se conoce como "bento" o "lunch box".
+                El obento generalmente consta de varios componentes que se organizan y colocan cuidadosamente en compartimentos separados dentro de la caja.
+                Estos componentes pueden incluir arroz, carne o pescado, verduras, encurtidos, tofu, huevos, frutas y otros acompañamientos.',
                 'image' => '/images/recipe8/obento.jpg',
                 'ingredient1' => null,
                 'ingredient2' => null,
@@ -143,12 +153,13 @@ class RecipeSeeder extends Seeder
                 'ingredient7' => null,
                 'ingredient8' => null,
                 'ingredient9' => null,
+                'cook_time' => '1 hora'
             ],
             [
                 'name' => 'Mochi Daihuku (だいふく)',
                 'primary_category_id' => 9,
                 'secondary_category_id' => 21,
-                'information' => 'Es un dulce tradicional de Japon. Dentro de mochi tiene varias ingredientes(frijoles dulces,frutas...etc)',
+                'information' => 'El daifuku es un popular postre japonés que consiste en una bola de mochi (una masa de arroz glutinoso) rellena con diversos ingredientes dulces.(frijoles dulces,frutas...etc)',
                 'image' => '/images/recipe9/daihuku.jpg',
                 'ingredient1' => null,
                 'ingredient2' => null,
@@ -159,6 +170,7 @@ class RecipeSeeder extends Seeder
                 'ingredient7' => null,
                 'ingredient8' => null,
                 'ingredient9' => null,
+                'cook_time' => '1 hora'
             ],
             // [
             //     'name' => 'Mochi Daihuku',
