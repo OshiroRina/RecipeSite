@@ -6,6 +6,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 
 defineProps({
     canResetPassword: Boolean,
@@ -29,7 +30,7 @@ const submit = () => {
     <GuestLayout>
         <Head title="Login" />
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+        <div v-if="status" class="mb-4 font-medium text-sm text-white">
             {{ status }}
         </div>
 
@@ -94,7 +95,7 @@ const submit = () => {
                         </g>
                     </g>
                 </svg>
-                <span class="font-bold">Continuar con Google (google認証を使用)</span>
+                <span class="font-bold">Continuar con Google (google認証)</span>
             </a>
         </div>
     </GuestLayout>
