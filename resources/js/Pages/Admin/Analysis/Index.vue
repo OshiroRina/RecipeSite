@@ -55,7 +55,7 @@ const getPeriod = async () => {
         data.labels = res.labels;
         data.counts = res.counts;
 
-        if(data.labels[0] == null){
+        if (data.labels[0] == null) {
             alert('該当データがありません');
         }
     } catch (e) {
@@ -92,7 +92,6 @@ const chartData = reactive({
 </script>
 <template>
     <AdminAuthenticatedLayout>
-
         <Head title="分析" />
         <div class="py-12">
             <div class="max-w-7xl mx-auto mb-5 sm:px-6 lg:px-8">
@@ -120,10 +119,10 @@ const chartData = reactive({
                     <v-table>
                         <thead>
                             <tr>
-                                <th>名前</th>
-                                <th>メールアドレス</th>
-                                <th>居住国</th>
-                                <th>作成日</th>
+                                <th class="w-1/4">名前</th>
+                                <th class="w-1/4">メールアドレス</th>
+                                <th class="w-1/4">居住国</th>
+                                <th class="w-1/4">作成日</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -131,7 +130,7 @@ const chartData = reactive({
                                 <td>{{ user.name }}</td>
                                 <td>{{ user.email }}</td>
                                 <td>{{ user.country }}</td>
-                                <td>{{ dayjs(user.created_at).format('YYYY-MM-DD') }}</td>
+                                <td>{{ dayjs(user.created_at).format('YYYY-MM-DD hh:mm:ss') }}</td>
                             </tr>
                         </tbody>
                     </v-table>

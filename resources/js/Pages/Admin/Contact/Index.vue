@@ -57,7 +57,7 @@ const props = defineProps({
                             </td>
                             <td class="w-1/5 info">{{ contact.email }}</td>
                             <td class="w-1/5 info">{{ contact.subject }}</td>
-                            <td class="w-1/4 info">{{ contact.context }}</td>
+                            <td class="w-1/4 info">{{ contact.context.substring(0,50) }}...</td>
                         </tr>
                     </tbody>
                 </v-table>

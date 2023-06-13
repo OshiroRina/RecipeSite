@@ -44,7 +44,7 @@ const deleteRecipe = (id) => {
                                 <Link :href="route('admin.recipe.edit', { id: recipe.id })" class="text-blue hover:opacity-75">
                                 {{ recipe.name }}</Link>
                             </td>
-                            <td class="w-1/2 info">{{ recipe.information }}</td>
+                            <td class="w-1/2 info">{{ recipe.information.substring(0,120) }}...</td>
                             <td class="w-1/4 text-right">
                                 <button @click="deleteRecipe(recipe.id)"
                                 as="button"
