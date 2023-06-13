@@ -7,6 +7,7 @@ use App\Http\Controllers\FavoriteController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\User\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,5 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact.index
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
 
 Route::get('/favorite', [FavoriteController::class, 'index'])->middleware('auth:users')->name('favorite.index');
-
 
 require __DIR__.'/auth.php';

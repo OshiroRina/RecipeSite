@@ -59,4 +59,26 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+    // /**
+    //  * OAuth認証先にリダイレクト(google)
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function redirectToGoogle()
+    // {
+    //     return Socialite::driver("google")->redirect();
+    // }
+
+    //  /**
+    //  * Google認証後の処理
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function googleCallback()
+    // {
+    //     $google_user = Socialite::driver('google')->user();
+
+    //     dd($google_user);
+    // }
 }
