@@ -62,9 +62,9 @@ const searchRecipes = async () => {
 
     <!-- モバイル用 -->
     <Link :href="route('user.topSite.index')" v-show="title">
-    <v-toolbar-title class="flex md:hidden lg:hidden text-center text-white mx-auto title"
+    <v-toolbar-title class="flex md:hidden lg:hidden text-center mx-auto title"
       style="font-family: 'Noto Serif', serif;">
-      <span class="text-sm md:text-lg lg:text-lg">Recetas de Comida Japonesa</span>
+      <span class="flex align-center text-sm md:text-lg lg:text-lg"><ApplicationLogo class="w-12"/>Recetas de Comida Japonesa</span>
     </v-toolbar-title>
     </Link>
 
