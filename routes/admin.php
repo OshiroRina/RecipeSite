@@ -27,20 +27,20 @@ use App\Http\Controllers\Admin\AnalysisController;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Admin/Welcome', [
-        'canLogin' => Route::has('admin.login'),
-        'canRegister' => Route::has('admin.register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+// Route::get('/', function () {
+//     return Inertia::render('Admin/Welcome', [
+//         'canLogin' => Route::has('admin.login'),
+//         'canRegister' => Route::has('admin.register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
 
 Route::middleware('guest:admin')->group(function () {
-    Route::get('register', [RegisteredUserController::class, 'create'])
-        ->name('register');
+    // Route::get('register', [RegisteredUserController::class, 'create'])
+    //     ->name('register');
 
-    Route::post('register', [RegisteredUserController::class, 'store']);
+    // Route::post('register', [RegisteredUserController::class, 'store']);
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');

@@ -47,11 +47,11 @@ const closeModal = () => {
 </script>
 
 <template>
-    <v-btn @click.prevent="createFavorite(props.recipe.id)" icon="mdi-heart" color="transparent" class="ml-5">
+    <button @click.prevent="createFavorite(props.recipe.id)" icon="mdi-heart" color="transparent" class="transition ml-5 hover:scale-110">
         <v-icon v-if="favorite_status === false" color="grey">mdi-heart</v-icon>
         <v-icon v-else-if="favorite_status === true" color="pink">mdi-heart</v-icon>
         <v-icon v-else color="grey">mdi-heart</v-icon>
-    </v-btn>
+    </button>
 
     <!-- 会員登録しているか確認のモーダル表示 -->
     <Dialog v-model="dialog" @createFavorite="closeModal()"/>

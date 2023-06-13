@@ -24,16 +24,20 @@ const searchRecipes = () => {
 
     <UserLayout>
         <Slider />
-        <div class="py-5">
-            <div class="w-full px-5 md:max-w-7xl mx-auto text-white elevation-5 font-bold py-2 mx-10 my-5 lg:px-8 rounded"
+        <div class="py-5 pb-10">
+            <!-- <div class="w-full px-5 md:max-w-7xl mx-auto text-white elevation-5 font-bold py-2 mx-10 my-5 lg:px-8 rounded"
                 style="background: #EADDA6;">
+                Categorias (カテゴリー)
+            </div> -->
+            <div class="w-full px-5 md:max-w-7xl mx-auto text-slate-50 elevation-5 font-bold py-2 mx-10 my-5 lg:px-8 rounded"
+            style="background-image: url('/storage/images/background.png'); background-size: cover;">
                 Categorias (カテゴリー)
             </div>
             <v-card class="max-w-7xl mx-auto sm:mt-5 md:mt-10">
                 <div class="py-10 mx-auto">
                     <v-row class="mx-5 md:pb-2">
                         <v-col cols="12" md="3"
-                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
+                            class="flex border-2 border-white align-center bg-gray-200 transition hover:scale-y-110 hover:bg-gray-300 shadow">
                             <input type="radio" :id="0" name="categories" :value="0" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="0"
@@ -48,7 +52,7 @@ const searchRecipes = () => {
                             </label>
                         </v-col>
                         <v-col cols="12" md="3"
-                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
+                            class="flex border-2 border-white align-center bg-gray-200 transition hover:scale-y-110 hover:bg-gray-300 shadow">
                             <input type="radio" :id="1" name="categories" :value="1" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="1"
@@ -62,7 +66,7 @@ const searchRecipes = () => {
                             </label>
                         </v-col>
                         <v-col cols="12" md="3"
-                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
+                            class="flex border-2 border-white align-center bg-gray-200 transition hover:scale-y-110 hover:bg-gray-300 shadow">
                             <input type="radio" :id="2" name="categories" :value="2" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="2"
@@ -75,7 +79,7 @@ const searchRecipes = () => {
                                 <FontAwesomeIcon icon="angle-right" />
                             </label>
                         </v-col>
-                        <v-col class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
+                        <v-col class="flex border-2 border-white align-center bg-gray-200 transition hover:scale-y-110 hover:bg-gray-300 shadow">
                             <input type="radio" :id="3" name="categories" :value="3" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="3"
@@ -93,7 +97,7 @@ const searchRecipes = () => {
                     </v-row>
                     <v-row class="mx-5 md:pb-2">
                         <v-col cols="12" md="3"
-                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
+                            class="flex border-2 border-white align-center bg-gray-200 transition hover:scale-y-110 hover:bg-gray-300 shadow">
                             <input type="radio" :id="4" name="categories" :value="4" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="4"
@@ -108,7 +112,7 @@ const searchRecipes = () => {
                             </label>
                         </v-col>
                         <v-col cols="12" md="3"
-                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
+                            class="flex border-2 border-white align-center bg-gray-200 transition hover:scale-y-110 hover:bg-gray-300 shadow">
                             <input type="radio" :id="5" name="categories" :value="5" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="5"
@@ -119,7 +123,7 @@ const searchRecipes = () => {
                             </label>
                         </v-col>
                         <v-col cols="12" md="3"
-                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
+                            class="flex border-2 border-white align-center bg-gray-200 transition hover:scale-y-110 hover:bg-gray-300 shadow">
                             <input type="radio" :id="6" name="categories" :value="6" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="6"
@@ -133,7 +137,7 @@ const searchRecipes = () => {
                             </label>
                         </v-col>
                         <v-col cols="12" md="3"
-                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
+                            class="flex border-2 border-white align-center bg-gray-200 transition hover:scale-y-110 hover:bg-gray-300 shadow">
                             <input type="radio" :id="7" name="categories" :value="7" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="7"
@@ -149,7 +153,7 @@ const searchRecipes = () => {
                     </v-row>
                     <v-row class="mx-5">
                         <v-col cols="12" md="3"
-                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
+                            class="flex border-2 border-white align-center bg-gray-200 transition hover:scale-y-110 hover:bg-gray-300 shadow">
                             <input type="radio" :id="8" name="categories" :value="8" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="8"
@@ -163,7 +167,7 @@ const searchRecipes = () => {
                             </label>
                         </v-col>
                         <v-col cols="12" md="3"
-                            class="flex border-2 border-white align-center bg-gray-200 hover:bg-gray-300 shadow">
+                            class="flex border-2 border-white align-center bg-gray-200 transition hover:scale-y-110 hover:bg-gray-300 shadow">
                             <input type="radio" :id="9" name="categories" :value="9" v-model="form.search_category"
                                 @change.prevent="searchRecipes" class="hidden peer" />
                             <label :for="9"
@@ -182,11 +186,11 @@ const searchRecipes = () => {
         </div>
         <div class="py-3 md:mt-10">
             <div class="w-full px-5 md:max-w-7xl mx-auto text-white elevation-5 font-bold mt-5 mb-8 py-2 sm:px-6 lg:px-8 rounded"
-                style="background: #EADDA6;">
+            style="background-image: url('/storage/images/background.png'); background-size: cover;">
                 Presentación (メッセージ)
             </div>
             <div class="md:flex max-w-7xl mx-auto pb-14 text-gray-600">
-                <div class="text-lg md:w-2/3 bg-gray-100 rounded py-10 px-5">
+                <div class="text-lg md:w-2/3 bg-white rounded py-10 px-5">
                     En realidad, hay muchas variedades en el mundo de la comida japonesa a parte de Sushi, Ramen...etc.<br>
                     Deseamos que conozca más de comida japonesa y se encuentre un nuevo descubrimineto.<br>
                     ¡Que disfrute!

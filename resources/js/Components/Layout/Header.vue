@@ -50,7 +50,7 @@ const searchRecipes = async () => {
 };
 </script>
 <template>
-  <v-app-bar style="background: #7F9172;" prominent>
+  <v-app-bar style="background-image: url('/storage/images/background.png'); background-size: cover;" prominent>
     <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
     <Link :href="route('user.topSite.index')" class="flex hover:opacity-75">
@@ -126,7 +126,7 @@ const searchRecipes = async () => {
 
           <!-- <v-list-item-content> -->
           <v-list-item-title class="mx-3 text-gray-600"
-            style="font-size:15px; font-weight: bold;">{{ item.title }}</v-list-item-title>
+            style="font-size:15px; font-weight: bold; font-family: 'Noto Serif', serif;">{{ item.title }}</v-list-item-title>
           <!-- </v-list-item-content> -->
         </div>
       </v-list-item>

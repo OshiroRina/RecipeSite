@@ -5,6 +5,8 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import FlashMessage from '@/Components/FlashMessage.vue';
+import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import { Link } from '@inertiajs/vue3';
 
 const showingNavigationDropdown = ref(false);
 </script>
@@ -18,11 +20,11 @@ const showingNavigationDropdown = ref(false);
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
-                            <!-- <div class="shrink-0 flex items-center">
-                                <Link :href="route('admin.dashboard')">
-                                    <ApplicationLogo class="block h-9 w-auto" />
+                            <div class="shrink-0 flex items-center">
+                                <Link :href="route('admin.recipe.index')">
+                                    <ApplicationLogo class="w-16"/>
                                 </Link>
-                            </div> -->
+                            </div>
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">

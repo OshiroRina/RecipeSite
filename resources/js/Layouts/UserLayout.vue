@@ -11,9 +11,9 @@ import Loading from "@/Components/Loading.vue";
                 <Loading />
             </div>
             <Header />
-            <div class="min-h-screen bg-gray-200">
+            <div class="min-h-screen" style="background-image: url('/storage/images/background-body.png'); background-size: cover;">
                 <!-- Page Content -->
-                <main>
+                <main style="font-family: 'Noto Serif', serif;">
                     <slot />
                 </main>
             </div>
