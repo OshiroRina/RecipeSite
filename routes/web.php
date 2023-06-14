@@ -4,10 +4,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\MyPageController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\User\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +37,8 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact.index
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
 
 Route::get('/favorite', [FavoriteController::class, 'index'])->middleware('auth:users')->name('favorite.index');
+
+Route::get('/myPage', [MyPageController::class, 'index'])->middleware('auth:users')->name('myPage');
+Route::delete('/myPage/delete/{id}', [MyPageController::class, 'delete'])->middleware('auth:users')->name('myPage.delete');
 
 require __DIR__.'/auth.php';

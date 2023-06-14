@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->string('google_id')->nullable()->unique();
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -29,15 +29,17 @@ console.log(props.recipe.cook_time)
                         <v-col v-else><img :src="'/storage/images/NoImage.png'" alt="" class="w-80"></v-col>
                         <v-col cols="12" md="6">
                             <ul class="bg-gray-200">
-                                <div class="flex font-bold align-center mb-5 bg-yellow-100 p-2">
+                                <div class="md:flex font-bold align-center mb-5 bg-yellow-100 p-2">
+                                <div class="flex align-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5">
                                         <path
                                             d="M176 32c44.2 0 80 35.8 80 80v16c0 8.8-7.2 16-16 16c-44.2 0-80-35.8-80-80V48c0-8.8 7.2-16 16-16zM56 64h48c13.3 0 24 10.7 24 24s-10.7 24-24 24H56c-13.3 0-24-10.7-24-24s10.7-24 24-24zM24 136H136c13.3 0 24 10.7 24 24s-10.7 24-24 24H24c-13.3 0-24-10.7-24-24s10.7-24 24-24zm8 96c0-13.3 10.7-24 24-24h48c13.3 0 24 10.7 24 24s-10.7 24-24 24H56c-13.3 0-24-10.7-24-24zM272 48c0-8.8 7.2-16 16-16c44.2 0 80 35.8 80 80v16c0 8.8-7.2 16-16 16c-44.2 0-80-35.8-80-80V48zM400 32c44.2 0 80 35.8 80 80v16c0 8.8-7.2 16-16 16c-44.2 0-80-35.8-80-80V48c0-8.8 7.2-16 16-16zm80 160v16c0 44.2-35.8 80-80 80c-8.8 0-16-7.2-16-16V256c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16zM352 176c8.8 0 16 7.2 16 16v16c0 44.2-35.8 80-80 80c-8.8 0-16-7.2-16-16V256c0-44.2 35.8-80 80-80zm-96 16v16c0 44.2-35.8 80-80 80c-8.8 0-16-7.2-16-16V256c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16zM3.5 347.6C1.6 332.9 13 320 27.8 320H484.2c14.8 0 26.2 12.9 24.4 27.6C502.3 397.8 464.2 437 416 446v2c0 17.7-14.3 32-32 32H128c-17.7 0-32-14.3-32-32v-2c-48.2-9-86.3-48.2-92.5-98.4z" />
                                     </svg>
                                     <span class="mx-3">Ingredientes (材料)</span>
-                                <div class="flex align-center text-end ml-5">
+                                </div>
+                                <div class="flex align-center text-end md:ml-5">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg>
-                                    <span class="ml-2">{{ props.recipe.cook_time }}</span>
+                                    <span class="ml-2 text-sm">{{ props.recipe.cook_time }}</span>
                                 </div>
                                 </div>
                                 <div class="px-3 pb-3">
@@ -55,8 +57,8 @@ console.log(props.recipe.cook_time)
                         </v-col>
                     </v-row>
                     <v-row>
-                        <v-col><v-textarea v-model="props.recipe.information" label="información" hide-details="auto"
-                                readonly style=" pointer-events: none;"></v-textarea></v-col>
+                        <v-col><v-textarea v-model="props.recipe.information" label="informacion" class="w-full h-full" hide-details
+                                readonly></v-textarea></v-col>
                     </v-row>
                 </div>
                 <div class="text-lg font-bold bg-gray-400 px-10 mx-2 md:mx-10 mb-4 text-white rounded">¿Cómo hacer? (作り方)
@@ -73,7 +75,7 @@ console.log(props.recipe.cook_time)
                                 </v-row>
                                 <v-row>
                                     <v-col><v-textarea v-model="detail.explanation" label="explicación" hide-details="auto"
-                                            readonly style=" pointer-events: none;"></v-textarea></v-col>
+                                            readonly></v-textarea></v-col>
                                 </v-row>
                                 <v-row>
                                     <v-col v-if="detail.image1 != null"><img :src="'/storage' + detail.image1" alt=""
