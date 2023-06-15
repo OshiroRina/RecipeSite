@@ -29,16 +29,29 @@ class GoogleAuthController extends Controller
     {
         $google_user = Socialite::driver('google')->user();
 
-        $user = User::firstOrCreate([
-            'email' => $google_user->email
-        ], [
-            'name' => $google_user->name,
-            'country' => $google_user->user['locale'],
-            'google_id' => $google_user->getId()
-        ]);
+        //退会済み(論理削除ユーザーか確認)
+        $registered_user = User::withTrashed()
+            ->where('google_id', $google_user->getId())
+            ->first();
 
-        Auth::login($user, true);
+        if (empty($registered_user)) {
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+            $user = User::firstOrCreate([
+                'email' => $google_user->email,
+            ], [
+                'name' => $google_user->name,
+                'country' => $google_user->user['locale'],
+                'google_id' => $google_user->getId()
+            ]);
+
+            Auth::login($user, true);
+
+            return redirect()->intended(RouteServiceProvider::HOME);
+        } else {
+            return to_route('user.login')->with([
+                'message' => 'La cuenta está eliminada. (退会済みのユーザーです)',
+                'status' => 'danger_message',
+            ]);
+        }
     }
 }

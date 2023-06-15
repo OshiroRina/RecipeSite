@@ -8,6 +8,9 @@
                 <div v-if="$page.props.flash.status === 'danger'" class="bg-red-300 text-white p-4">
                     {{ $page.props.flash.message }}
                 </div>
+                <div v-if="$page.props.flash.status === 'danger_message'" class="text-red bg-gray-300 p-2">
+                    {{ $page.props.flash.message }}
+                </div>
             </div>
         </div>
     </div>
