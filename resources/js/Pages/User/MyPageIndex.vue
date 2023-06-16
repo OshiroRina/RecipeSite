@@ -10,7 +10,7 @@ const props = defineProps({
 
 const deleteAccount = (id) =>{
     router.delete(route("user.myPage.delete",id),{
-        onBefore:() => confirm("¿Está seguro de que desea eliminarla? \r\n 本当に削除してよろしいでしょうか？"),
+        onBefore:() => confirm("¿Está seguro de que desea darse de baja? \r\n 退会処理をしてよろしいでしょうか？"),
     });
 }
 

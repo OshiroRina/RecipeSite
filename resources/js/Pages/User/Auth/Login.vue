@@ -61,7 +61,7 @@ const submit = () => {
                     Si se le olvidó la contraseña
                 </Link> -->
                  <Link :href="route('user.register')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Registrarse
+                    Registrarse (ご登録)
                 </Link>
 
                 <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">

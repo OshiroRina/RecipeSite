@@ -86,7 +86,7 @@ const searchRecipes = async () => {
                         <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                             <div class="group relative" v-for="recipe in props.categories" :key="recipe.id">
                                 <div
-                                    class="min-h-80 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                                    class="min-h-80 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:scale-110 group-hover:opacity-75 lg:h-80">
                                     <Link :href="route('user.recipe.show', { id: recipe.id })">
                                     <img :src="'/storage/images/NoImage.png'"
                                         class="h-full w-full object-cover object-center lg:h-full lg:w-full"

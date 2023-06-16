@@ -25,10 +25,6 @@ const searchRecipes = () => {
     <UserLayout>
         <Slider />
         <div class="py-5 pb-10">
-            <!-- <div class="w-full px-5 md:max-w-7xl mx-auto text-white elevation-5 font-bold py-2 mx-10 my-5 lg:px-8 rounded"
-                style="background: #EADDA6;">
-                Categorias (カテゴリー)
-            </div> -->
             <div class="w-full px-5 md:max-w-7xl mx-auto text-slate-50 elevation-5 font-bold py-2 mx-10 my-5 lg:px-8 rounded"
             style="background-image: url('/storage/images/background.png'); background-size: cover;">
                 Categorias (カテゴリー)

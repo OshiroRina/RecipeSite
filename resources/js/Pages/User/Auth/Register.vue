@@ -73,7 +73,7 @@ const submit = () => {
 
             <div class="flex items-center justify-end mt-4">
                 <Link :href="route('user.login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                Ya está registrado?
+                Ya está registrado? (ご登録済みの方)
                 </Link>
 
                 <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
