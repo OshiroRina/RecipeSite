@@ -36,10 +36,13 @@ class RecipeController extends Controller
 
         $user_id = Auth::id();
 
+        $count = $categories->count();
+
         return Inertia::render('User/RecipeSearch', [
             'categories' => $categories,
             'user_id' => $user_id,
-            'primary_categories' => $primary_categories
+            'primary_categories' => $primary_categories,
+            'count' => $count
         ]);
     }
 

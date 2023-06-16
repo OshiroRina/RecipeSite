@@ -8,7 +8,8 @@ import Favorite from "@/Components/Favorite.vue";
 const props = defineProps({
     categories: Array,
     user_id: Number,
-    primary_categories: Array
+    primary_categories: Array,
+    count: Number
 });
 
 const checkbox = ref(false);
@@ -79,14 +80,17 @@ const searchRecipes = async () => {
                 </v-card>
                 <div class="bg-white px-10 mb-5">
                     <div class="mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                        <div class="text-2xl font-bold tracking-tight text-gray-900">Recetas (レシピ)</div>
+                        <div class="flex align-center justify-between">
+                            <div class="text-2xl font-bold tracking-tight text-gray-900">Recetas (レシピ) </div>
+                            <div class="text-gray-500">En total : {{ props.count }}</div>
+                        </div>
                         <!-- 検索結果無しの場合 -->
                         <div v-if="props.categories[0] == null" class="pt-10 text-lg text-gray-500">No hay resultados para
                             tu búsqueda. (検索結果が見つかりませんでした)</div>
                         <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                             <div class="group relative" v-for="recipe in props.categories" :key="recipe.id">
                                 <div
-                                    class="min-h-80 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:scale-110 group-hover:opacity-75 lg:h-80">
+                                    class="min-h-80 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:scale-105 group-hover:opacity-75 lg:h-80">
                                     <Link :href="route('user.recipe.show', { id: recipe.id })">
                                     <img :src="'/storage/images/NoImage.png'"
                                         class="h-full w-full object-cover object-center lg:h-full lg:w-full"
