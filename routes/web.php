@@ -5,6 +5,7 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MyPageController;
+use App\Http\Controllers\BlogController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,6 +36,9 @@ Route::get('/recipeDetail/{id}', [RecipeController::class, 'show'])->name('recip
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.detail');
 
 Route::get('/favorite', [FavoriteController::class, 'index'])->middleware('auth:users')->name('favorite.index');
 

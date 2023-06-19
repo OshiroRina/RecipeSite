@@ -20,6 +20,12 @@ const items = [
     icon: 'mdi-table-arrow-up'
   },
   {
+    title: 'Blogs (ブログ)',
+    value: 'Blogs',
+    link: '/blog',
+    icon: 'mdi-format-float-center'
+  },
+  {
     title: 'Contacto (お問い合わせ)',
     value: 'Contacto',
     link: '/contact',
@@ -132,7 +138,7 @@ const searchRecipes = async () => {
           <!-- </v-list-item-icon> -->
 
           <!-- <v-list-item-content> -->
-          <v-list-item-title class="mx-3 text-gray-600"
+          <v-list-item-title class="mx-3 text-gray-600 py-2"
             style="font-size:15px; font-weight: bold; font-family: 'Noto Serif', serif;">{{ item.title }}</v-list-item-title>
           <!-- </v-list-item-content> -->
         </div>
