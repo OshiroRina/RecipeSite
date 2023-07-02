@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\RecipeController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\AnalysisController;
+use App\Http\Controllers\Admin\BlogController;
 
 
 /*
@@ -86,6 +87,8 @@ Route::middleware('auth:admin')->group(function () {
 });
 
 Route::resource('recipe', RecipeController::class)->middleware('auth:admin');
+
+Route::resource('blog', BlogController::class)->middleware('auth:admin');
 
 Route::middleware('auth:admin')->group(function () {
     Route::get('/contact', [ContactController::class, 'index'])

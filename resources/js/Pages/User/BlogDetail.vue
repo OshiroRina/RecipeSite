@@ -19,7 +19,7 @@ console.log(props.blog)
                 <v-card class="mt-20 py-20">
                     <section class="text-gray-600 body-font">
                         <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-                            <img :src="'/storage' + blog.image" alt="" class="w-1/3 mb-10">
+                            <img :src="'/storage' + blog.image" alt="" class="w-full md:w-1/3 mb-10">
                             <div class="text-center lg:w-2/3 w-full">
                                 <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
                                     {{ blog.title }}</h1>

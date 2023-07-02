@@ -29,10 +29,13 @@ const showingNavigationDropdown = ref(false);
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink :href="route('admin.recipe.index')" :active="route().current('admin.dashboard')" class="text-white hover:opacity-80">
-                                    Recetas (レシピ)
+                                    Recetas (レシピ管理)
                                 </NavLink>
+                                <!-- <NavLink :href="route('admin.blog.index')" :active="route().current('admin.dashboard')" class="text-white hover:opacity-80">
+                                    Blog (ブログ管理)
+                                </NavLink> -->
                                 <NavLink :href="route('admin.contact.index')" :active="route().current('admin.dashboard')" class="text-white hover:opacity-80">
-                                    Contactos (お問い合わせ)
+                                    Contactos (お問い合わせ管理)
                                 </NavLink>
                                 <NavLink :href="route('admin.analysis.index')" :active="route().current('admin.dashboard')" class="text-white hover:opacity-80">
                                     Usuarios Análisis (ユーザー分析)
